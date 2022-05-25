@@ -11,7 +11,7 @@ The threshold value is 50.0.
 ## Confidence/Accuracy Above the Threshold
 
 
-The average confidence level above the threshold is: 95.84836287553921
+The average confidence level above the threshold is: 94.34036633302999
 
 The average accuracy level above the threshold is: 0.5930232558139535
 
@@ -29,176 +29,176 @@ The data is in Appendix B
 ![training_data.png](training_data.png)
 ## Appendix A
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.1.jpg     
-Confidence Level: 88.81229758262634     Predicted Label: cats   Actual Label: cats
+Confidence Level: 85.9870970249176      Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.10.jpg    
-Confidence Level: 96.40697240829468     Predicted Label: cats   Actual Label: cats
+Confidence Level: 94.84054446220398     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.11.jpg    
-Confidence Level: 96.83942198753357     Predicted Label: cats   Actual Label: cats
+Confidence Level: 94.55156922340393     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.12.jpg    
-Confidence Level: 95.48563957214355     Predicted Label: cats   Actual Label: cats
+Confidence Level: 93.85063648223877     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.13.jpg    
-Confidence Level: 97.5138008594513      Predicted Label: cats   Actual Label: cats
+Confidence Level: 95.71884274482727     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.14.jpg    
-Confidence Level: 92.95758008956909     Predicted Label: cats   Actual Label: cats
+Confidence Level: 90.24544358253479     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.15.jpg    
-Confidence Level: 91.45827889442444     Predicted Label: cats   Actual Label: cats
+Confidence Level: 88.87675404548645     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.16.jpg    
-Confidence Level: 96.27070426940918     Predicted Label: cats   Actual Label: cats
+Confidence Level: 94.13105845451355     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.17.jpg    
-Confidence Level: 97.71571755409241     Predicted Label: cats   Actual Label: cats
+Confidence Level: 96.33083939552307     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.18.jpg    
-Confidence Level: 98.9872395992279      Predicted Label: cats   Actual Label: cats
+Confidence Level: 99.61063861846924     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.19.jpg    
-Confidence Level: 94.18883323669434     Predicted Label: cats   Actual Label: cats
+Confidence Level: 92.1143889427185      Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.2.jpg     
-Confidence Level: 98.30031394958496     Predicted Label: cats   Actual Label: cats
+Confidence Level: 97.12637662887573     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.20.jpg    
-Confidence Level: 98.59764575958252     Predicted Label: cats   Actual Label: cats
+Confidence Level: 97.62586951255798     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.21.jpg    
-Confidence Level: 97.23976254463196     Predicted Label: cats   Actual Label: cats
+Confidence Level: 95.7425057888031      Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.22.jpg    
-Confidence Level: 91.00880026817322     Predicted Label: cats   Actual Label: cats
+Confidence Level: 87.60369420051575     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.23.jpg    
-Confidence Level: 98.82790446281433     Predicted Label: cats   Actual Label: cats
+Confidence Level: 97.98664450645447     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.24.jpg    
-Confidence Level: 95.21774053573608     Predicted Label: cats   Actual Label: cats
+Confidence Level: 92.43178367614746     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.25.jpg    
-Confidence Level: 97.2369909286499      Predicted Label: cats   Actual Label: cats
+Confidence Level: 94.66441869735718     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.26.jpg    
-Confidence Level: 96.034175157547       Predicted Label: cats   Actual Label: cats
+Confidence Level: 92.99613237380981     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.27.jpg    
-Confidence Level: 95.33607363700867     Predicted Label: cats   Actual Label: cats
+Confidence Level: 93.04814338684082     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.28.jpg    
-Confidence Level: 95.10587453842163     Predicted Label: cats   Actual Label: cats
+Confidence Level: 92.68421530723572     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.29.jpg    
-Confidence Level: 98.9304780960083      Predicted Label: cats   Actual Label: cats
+Confidence Level: 97.86579608917236     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.3.jpg     
-Confidence Level: 98.60223531723022     Predicted Label: cats   Actual Label: cats
+Confidence Level: 97.51946926116943     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.30.jpg    
-Confidence Level: 99.14300441741943     Predicted Label: cats   Actual Label: cats
+Confidence Level: 98.32920432090759     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.31.jpg    
-Confidence Level: 99.29757118225098     Predicted Label: cats   Actual Label: cats
+Confidence Level: 98.58278632164001     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.32.jpg    
-Confidence Level: 99.86037015914917     Predicted Label: cats   Actual Label: cats
+Confidence Level: 99.65870976448059     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.33.jpg    
-Confidence Level: 87.50090003013611     Predicted Label: cats   Actual Label: cats
+Confidence Level: 84.43872332572937     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.34.jpg    
-Confidence Level: 95.86977362632751     Predicted Label: cats   Actual Label: cats
+Confidence Level: 94.55540776252747     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.35.jpg    
-Confidence Level: 92.38358736038208     Predicted Label: cats   Actual Label: cats
+Confidence Level: 89.59816098213196     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.36.jpg    
-Confidence Level: 99.41337704658508     Predicted Label: cats   Actual Label: cats
+Confidence Level: 98.7490177154541      Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.37.jpg    
-Confidence Level: 89.47542309761047     Predicted Label: cats   Actual Label: cats
+Confidence Level: 86.64999604225159     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.38.jpg    
-Confidence Level: 97.20818400382996     Predicted Label: cats   Actual Label: cats
+Confidence Level: 95.6053376197815      Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.39.jpg    
-Confidence Level: 87.83760666847229     Predicted Label: cats   Actual Label: cats
+Confidence Level: 85.12420058250427     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.4.jpg     
-Confidence Level: 93.50974559783936     Predicted Label: cats   Actual Label: cats
+Confidence Level: 91.04326367378235     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.40.jpg    
-Confidence Level: 94.77410912513733     Predicted Label: cats   Actual Label: cats
+Confidence Level: 92.62306094169617     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.41.jpg    
-Confidence Level: 96.96400165557861     Predicted Label: cats   Actual Label: cats
+Confidence Level: 95.01357674598694     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.42.jpg    
-Confidence Level: 99.38217401504517     Predicted Label: cats   Actual Label: cats
+Confidence Level: 98.64826798439026     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.43.jpg    
-Confidence Level: 98.6021876335144      Predicted Label: cats   Actual Label: cats
+Confidence Level: 97.83679246902466     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.44.jpg    
-Confidence Level: 98.17785024642944     Predicted Label: cats   Actual Label: cats
+Confidence Level: 96.63330912590027     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.45.jpg    
-Confidence Level: 93.62934827804565     Predicted Label: cats   Actual Label: cats
+Confidence Level: 91.02241396903992     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.46.jpg    
-Confidence Level: 95.43240070343018     Predicted Label: cats   Actual Label: cats
+Confidence Level: 93.84917616844177     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.47.jpg    
-Confidence Level: 98.31634163856506     Predicted Label: cats   Actual Label: cats
+Confidence Level: 97.10026979446411     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.48.jpg    
-Confidence Level: 92.63954758644104     Predicted Label: cats   Actual Label: cats
+Confidence Level: 89.73411321640015     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.49.jpg    
-Confidence Level: 98.8585114479065      Predicted Label: cats   Actual Label: cats
+Confidence Level: 97.92320132255554     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.5.jpg     
-Confidence Level: 99.38924908638        Predicted Label: cats   Actual Label: cats
+Confidence Level: 98.63914251327515     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.50.jpg    
-Confidence Level: 98.11416268348694     Predicted Label: cats   Actual Label: cats
+Confidence Level: 96.7900812625885      Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.51.jpg    
-Confidence Level: 92.58829355239868     Predicted Label: cats   Actual Label: cats
+Confidence Level: 90.11849164962769     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.6.jpg     
-Confidence Level: 97.6389229297638      Predicted Label: cats   Actual Label: cats
+Confidence Level: 96.77445888519287     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.7.jpg     
-Confidence Level: 94.73196864128113     Predicted Label: cats   Actual Label: cats
+Confidence Level: 92.45548844337463     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.8.jpg     
-Confidence Level: 96.68121933937073     Predicted Label: cats   Actual Label: cats
+Confidence Level: 95.0657069683075      Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\cats\cat.9.jpg     
-Confidence Level: 99.172842502594       Predicted Label: cats   Actual Label: cats
+Confidence Level: 98.48072528839111     Predicted Label: cats   Actual Label: cats
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.1.jpg     
-Confidence Level: 98.75662922859192     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 97.6205587387085      Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.10.jpg    
-Confidence Level: 98.75523447990417     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 97.74920344352722     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.11.jpg    
-Confidence Level: 94.89944577217102     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 92.55765080451965     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.12.jpg    
-Confidence Level: 97.53232002258301     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 98.4855055809021      Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.13.jpg    
-Confidence Level: 95.96888422966003     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 96.90669178962708     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.14.jpg    
-Confidence Level: 97.63097763061523     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 95.88480591773987     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.15.jpg    
-Confidence Level: 96.9743549823761      Predicted Label: cats   Actual Label: dogs
+Confidence Level: 95.54139971733093     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.16.jpg    
-Confidence Level: 94.67913508415222     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 92.62334108352661     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.17.jpg    
-Confidence Level: 97.92728424072266     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 96.50573134422302     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.18.jpg    
-Confidence Level: 80.48315048217773     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 78.32171320915222     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.19.jpg    
-Confidence Level: 84.55157279968262     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 84.29461717605591     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.2.jpg     
-Confidence Level: 98.1115460395813      Predicted Label: cats   Actual Label: dogs
+Confidence Level: 96.49541974067688     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.20.jpg    
-Confidence Level: 98.46426248550415     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 97.4144995212555      Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.21.jpg    
-Confidence Level: 95.22789120674133     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 94.14924383163452     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.22.jpg    
-Confidence Level: 96.59433364868164     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 94.58977580070496     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.23.jpg    
-Confidence Level: 99.61555004119873     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 99.10218715667725     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.24.jpg    
-Confidence Level: 96.90096974372864     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 95.4262375831604      Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.25.jpg    
-Confidence Level: 89.4116759300232      Predicted Label: cats   Actual Label: dogs
+Confidence Level: 93.96136999130249     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.26.jpg    
-Confidence Level: 99.00710582733154     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 98.48523736000061     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.27.jpg    
-Confidence Level: 91.82403683662415     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 94.44358348846436     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.28.jpg    
-Confidence Level: 91.2219226360321      Predicted Label: cats   Actual Label: dogs
+Confidence Level: 88.56375813484192     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.29.jpg    
-Confidence Level: 98.25613498687744     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 96.74527049064636     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.3.jpg     
-Confidence Level: 97.50366806983948     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 96.07892036437988     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.30.jpg    
-Confidence Level: 96.71484231948853     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 95.14291286468506     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.31.jpg    
-Confidence Level: 95.35936117172241     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 93.45013499259949     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.32.jpg    
-Confidence Level: 94.28554773330688     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 91.63587093353271     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.33.jpg    
-Confidence Level: 98.20219874382019     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 97.43643403053284     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.34.jpg    
-Confidence Level: 95.90469002723694     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 93.50115060806274     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.35.jpg    
-Confidence Level: 98.63085150718689     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 97.30096459388733     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.4.jpg     
-Confidence Level: 96.92568778991699     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 94.68370079994202     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.5.jpg     
-Confidence Level: 95.29590606689453     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 92.82216429710388     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.6.jpg     
-Confidence Level: 96.24254703521729     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 95.0484573841095      Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.7.jpg     
-Confidence Level: 97.29616045951843     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 95.26105523109436     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.8.jpg     
-Confidence Level: 96.32295370101929     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 93.90648603439331     Predicted Label: cats   Actual Label: dogs
 Path to Image: C:\Users\tkwok7\PycharmProjects\gtriScreenClassification\testing_set\CatsDogs\dogs\dog.9.jpg     
-Confidence Level: 97.81321883201599     Predicted Label: cats   Actual Label: dogs
+Confidence Level: 96.53950333595276     Predicted Label: cats   Actual Label: dogs
 
 ## Appendix B

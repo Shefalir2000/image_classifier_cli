@@ -141,12 +141,7 @@ def makePrediction(image, class_names):
 
 
 def runNewModel(numEpocs, numBatchSize, trainingPath, testingPath, height, width, modelPath, conf_thresh_val):
-    logging.basicConfig(
-        format="[%(asctime)s] %(levelname)s: %(message)s",
-        datefmt="%m/%d/%Y %I:%M:%S %p",
-        filename="logs.log",
-        level=logging.INFO
-    )
+
     global model
 
     # set the data here
