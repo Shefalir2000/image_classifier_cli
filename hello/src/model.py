@@ -141,12 +141,7 @@ def makePrediction(image, class_names):
 
 
 def runNewModel(numEpocs, numBatchSize, trainingPath, testingPath, height, width, modelPath, conf_thresh_val):
-    logging.basicConfig(
-        format="[%(asctime)s] %(levelname)s: %(message)s",
-        datefmt="%m/%d/%Y %I:%M:%S %p",
-        filename="logs.log",
-        level=logging.INFO
-    )
+
     global model
 
     # set the data here
@@ -170,7 +165,7 @@ def runNewModel(numEpocs, numBatchSize, trainingPath, testingPath, height, width
         DH.categorize(d.num_confidence, training_d)
         model.save("Model_Version1")
     else:
-        model_name = data.model_file.rsplit('\\',1)[-1]
+        model_name = data.model_file.rsplit('/',1)[-1]
         global version_num
         if(model_name.__contains__("Version")):
             version_num = model_name[model_name.index("Version") + 7]

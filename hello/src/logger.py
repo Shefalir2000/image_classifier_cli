@@ -1,4 +1,9 @@
 import logging
+from hello.src import DataClass
+
+data = DataClass.Parameters()
+
+print("test " + data.test_file)
 
 logging.basicConfig(
     format="[%(asctime)s] %(levelname)s: %(message)s",
@@ -9,5 +14,8 @@ logging.basicConfig(
 global logger
 
 logger = logging.getLogger()
+
+logger.info("DASDAS")
+
 
 print("DONE")
