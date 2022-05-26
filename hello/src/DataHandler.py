@@ -74,9 +74,9 @@ def testing(file_name, path, height, width,modelInput,train_ds):
     testing_name = "Red"
     directory_name = "ColorsV3"
     """
-    #"C:\\Users\\sranjan31\\PycharmProjects\\gtriScreenDifferentiation\\ColorsV3\\Red\\"+
-    #path = os.getcwd() + "\\" + directory_name + "\\" + testing_name + "\\" + file_name
-    path_file = path + "\\" + file_name
+    #"C:/Users/sranjan31/PycharmProjects/gtriScreenDifferentiation/ColorsV3/Red/"+
+    #path = os.getcwd() + "/" + directory_name + "/" + testing_name + "/" + file_name
+    path_file = path + "/" + file_name
     img = tf.keras.utils.load_img(path_file, target_size = (data.height_pixels, data.width_pixels))
     img_array = tf.keras.utils.img_to_array(img)
     predictions = m.makePrediction(modelInput, img_array, train_ds.class_names)
@@ -95,7 +95,7 @@ def gathering_data_confidence(train_ds):
     for directory_name in test_directory: #colorsV# directory
         count += 1
         for testing_name in train_ds.class_names: #red, green, blue
-            path = test_directory + "\\" + testing_name
+            path = test_directory + "/" + testing_name
             files = os.listdir(path)
             for file_name in files: #files in red,green, or blue directory
                 #print(file_name)
@@ -143,23 +143,23 @@ def categorize(confidence_threshold, train_ds):
     print(m.version_num)
     for sub in os.listdir(testing_directory_name):
         print("sub",sub)
-        for file in os.listdir(testing_directory_name + "\\" + sub):
+        for file in os.listdir(testing_directory_name + "/" + sub):
             print(file)
-            img = tf.keras.utils.load_img(testing_directory_name + "\\" + sub + "\\" + file, target_size=(data.width_pixels, data.height_pixels))
+            img = tf.keras.utils.load_img(testing_directory_name + "/" + sub + "/" + file, target_size=(data.width_pixels, data.height_pixels))
             img_array = tf.keras.utils.img_to_array(img)
             prediction, confidence = m.makePrediction( img_array, train_ds.class_names)
             """if confidence < confidence_threshold * 100:
-                shutil.copyfile(testing_directory_name + "\\" + file,    "lessThan"
-             + str(confidence_threshold * 100) + "% confident\\" + str(round(confidence,2)) + "Prediction;" + prediction + "Actual;" + file)
+                shutil.copyfile(testing_directory_name + "/" + file,    "lessThan"
+             + str(confidence_threshold * 100) + "% confident/" + str(round(confidence,2)) + "Prediction;" + prediction + "Actual;" + file)
             else:
-                shutil.copyfile(testing_directory_name + "\\" + file, "moreThan"
-                                + str(confidence_threshold * 100) + "% confident\\" + str(
+                shutil.copyfile(testing_directory_name + "/" + file, "moreThan"
+                                + str(confidence_threshold * 100) + "% confident/" + str(
                     round(confidence, 2)) + "Prediction;" + prediction + "Actual;" + file)"""
             if confidence < confidence_threshold*100:
                 # add the values to the arrays
-                below_threshold.append((confidence, prediction, sub, testing_directory_name + "\\" + sub + "\\" +file))
+                below_threshold.append((confidence, prediction, sub, testing_directory_name + "/" + sub + "/" +file))
             else:
-                above_threshold.append((confidence, prediction, sub, testing_directory_name + "\\" + sub + "\\" + file))
+                above_threshold.append((confidence, prediction, sub, testing_directory_name + "/" + sub + "/" + file))
     #print("AT", above_threshold)
     above_avg_accuracy, above_avg_confidence = caluclate_average(above_threshold)
     below_avg_accuracy, below_avg_confidence = caluclate_average(below_threshold)
@@ -215,7 +215,7 @@ if __name__ == "__main__":
     print("DMNKLSNKLDANKASNKL:"+ str(len(training.class_names)))
     m.trainModel(training,validation)
     model.save("CDSavedModel")
-    #pathF = os.getcwd() + "\\cat.4001.jpg"
+    #pathF = os.getcwd() + "/cat.4001.jpg"
     #img = tf.keras.utils.load_img(pathF, target_size=(height, width))
     #img_array = tf.keras.utils.img_to_array(img)
     #m.makePrediction(model, img_array ,training.class_names)

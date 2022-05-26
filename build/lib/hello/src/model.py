@@ -22,7 +22,7 @@ Make sure all different size images in the input parameter sizes change
 other solution: insert parameters in the application
 """
 
-
+version_num = 1
 data = DataClass.Parameters()
 try:
     model = keras.models.load_model(data.model_file)
@@ -95,8 +95,8 @@ def trainModel(train_dataset, validation_dataset):
     plt.plot(epochs_range, val_loss, label='Validation Loss')
     plt.legend(loc='upper right')
     plt.title('Training and Validation Loss')
+    plt.savefig('training_data.png')
     plt.show()
-
 #def makePrediction(model, image, class_names):
 def makePrediction(image, class_names):
     """height = 400
@@ -141,13 +141,9 @@ def makePrediction(image, class_names):
 
 
 def runNewModel(numEpocs, numBatchSize, trainingPath, testingPath, height, width, modelPath, conf_thresh_val):
-    logging.basicConfig(
-        format="[%(asctime)s] %(levelname)s: %(message)s",
-        datefmt="%m/%d/%Y %I:%M:%S %p",
-        filename="logs.log",
-        level=logging.INFO
-    )
-    
+
+    global model
+
     # set the data here
     d = DataClass.Parameters()
     #numEpocs, numBatchSize, height, width, trainingPath, testingPath, modelPath
@@ -158,6 +154,7 @@ def runNewModel(numEpocs, numBatchSize, trainingPath, testingPath, height, width
     d.training_file = trainingPath
     d.test_file = testingPath
     d.model_file = modelPath
+
     if modelPath == "":
         training_d, validation = DH.change_input()
         if conf_thresh_val == -1:
@@ -166,15 +163,27 @@ def runNewModel(numEpocs, numBatchSize, trainingPath, testingPath, height, width
         model = createModel(len(training_d.class_names))
         trainModel(training_d, validation)
         DH.categorize(d.num_confidence, training_d)
+        model.save("Model_Version1")
     else:
+        model_name = data.model_file.rsplit('\\',1)[-1]
+        global version_num
+        if(model_name.__contains__("Version")):
+            version_num = model_name[model_name.index("Version") + 7]
+            model_name = model_name[:model_name.index("Version") + 7] + str(int(version_num) + 1) + model_name[(model_name.index("Version") + 8):]
+        else:
+            model_name = model_name +"Version2"
+            version_num = 2
         training_d, validation = DH.change_input()
         if conf_thresh_val == -1:
             conf_thresh_val = 1/len(training_d.class_names)
         d.num_confidence = conf_thresh_val
         model = keras.models.load_model(modelPath)
         model.summary()
+        print(model.layers[1].weights)
         trainModel(training_d, validation)
         DH.categorize(d.num_confidence, training_d)
+
+
     return
 
 
