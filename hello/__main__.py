@@ -95,9 +95,9 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
 @click.option("--width","-w",type=int,help = "Changes the width of the images during training.")
 @click.option("--output","-o",type=click.STRING,help="Changes where the file will be created to store analysis about the model creation process.")
 @click.option("--save_model", "-sm", type=bool, help="Whether or not you would like to save the model (True or False).")
-@click.option("--nr", is_flag = True)
+@click.option("--no_report", "-nr", is_flag=True, help="Decide whether a report is generated or not.")
 
-def predict( testing, batch, epochs, model, height, width, confidence_threshold, output,save_model, nr):
+def predict( testing, batch, epochs, model, height, width, confidence_threshold, output,save_model, no_report):
     # Make a call to the model if it needs to be trained and saved somewhere
     print(epochs)
     epochsV = 8
@@ -156,7 +156,7 @@ def predict( testing, batch, epochs, model, height, width, confidence_threshold,
             raise FileNotFoundError("This path does not exist.")
         testingV = testing
         #print(testing)
-    if nr:
+    if no_report:
         make_reportV = False
 
 

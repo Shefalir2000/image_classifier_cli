@@ -61,9 +61,9 @@ def predict(numEpocs, numBatchSize, testingPath, height, width, modelPath, conf_
         #model.summary()
         #m.trainModel(training_d, validation)
         DH.categorize(d.num_confidence, numClasses)
-    if saveV:
-        if output_loc == "Output":
-            m.model.save(os.getcwd() + "/Output/Model")
-        else:
-            m.model.save(output_loc + "/Model")
+    # if saveV:
+    #     if output_loc == "Output":
+    #         m.model.save(os.getcwd() + "/Output/Model")
+    #     else:
+    #         m.model.save(output_loc + "/Model")
     return
