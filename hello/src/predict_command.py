@@ -13,7 +13,7 @@ try:
 except:
     print()
 
-def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV,saveV, make_reportV):
+def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV, make_reportV):
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
     logging.basicConfig(
@@ -23,12 +23,12 @@ def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outp
         level=logging.INFO
     )
     LOGGER = logging.getLogger()
-    predict(epochsV, batchV, testingV, heightV, widthV, modelV, ctV, outputV,saveV, make_reportV)
+    predict(epochsV, batchV, testingV, heightV, widthV, modelV, ctV, outputV, make_reportV)
     LOGGER.info('Master runs')
 
     return
 
-def predict(numEpocs, numBatchSize, testingPath, height, width, modelPath, conf_thresh_val, output_loc, saveV, make_reportV):
+def predict(numEpocs, numBatchSize, testingPath, height, width, modelPath, conf_thresh_val, output_loc, make_reportV):
     print("testing in runfile.")
     if output_loc == "Output":
         print("Bleh")
@@ -61,9 +61,11 @@ def predict(numEpocs, numBatchSize, testingPath, height, width, modelPath, conf_
         #model.summary()
         #m.trainModel(training_d, validation)
         DH.categorize(d.num_confidence, numClasses)
-    if saveV:
-        if output_loc == "Output":
-            m.model.save(os.getcwd() + "/Output/Model")
-        else:
-            m.model.save(output_loc + "/Model")
+
+    # we are no longer saving the model in the predict function
+    # if saveV:
+    #     if output_loc == "Output":
+    #         m.model.save(os.getcwd() + "/Output/Model")
+    #     else:
+    #         m.model.save(output_loc + "/Model")
     return

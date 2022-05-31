@@ -158,7 +158,10 @@ def categorize(confidence_threshold, class_names):
     above_avg_accuracy, above_avg_confidence = caluclate_average(above_threshold)
     below_avg_accuracy, below_avg_confidence = caluclate_average(below_threshold)
     if(data.make_report):
-        mdFile = MdUtils(file_name=data.output_location+"/Confidence and Accuracy Report", title="Confidence and Accuracy Report")
+        #mdFile = MdUtils(file_name=data.output_location+"/Confidence and Accuracy Report",
+        # title="Confidence and Accuracy Report")
+        mdFile = MdUtils(file_name=data.model_file + "/Confidence and Accuracy Report",
+                         title="Confidence and Accuracy Report")
 
         mdFile.new_header(level = 1 ,title = "Model version number " + str(m.version_num))
 

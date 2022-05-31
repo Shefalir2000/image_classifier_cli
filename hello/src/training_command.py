@@ -17,7 +17,7 @@ except:
 
 
 
-def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV,saveV):
+def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV):
     print("I am hereeee")
     if outputV == "Output":
         #had to add this because if the output file didn't exist, it would fail
@@ -46,13 +46,13 @@ def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outp
         level=logging.INFO
     )
     LOGGER = logging.getLogger()
-    train(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV, saveV)
+    train(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV)
     LOGGER.info('Master runs')
 
     return
 
 
-def train(numEpocs, numBatchSize, trainingPath, testingPath, height, width, modelPath, conf_thresh_val, output_loc, saveV):
+def train(numEpocs, numBatchSize, trainingPath, testingPath, height, width, modelPath, conf_thresh_val, output_loc):
     print("training in runfile.")
 
         # shutil.move(os.getcwd()+"logs.log", os.getcwd()+"Output")
