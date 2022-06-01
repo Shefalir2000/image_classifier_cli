@@ -6,9 +6,8 @@ from tensorflow import keras
 from matplotlib import pyplot as plt
 import random as r
 
-from hello.src import DataClass
-from hello.src import model as m
-#from hello.src.logger import logger
+from ImgClass.src import DataClass
+from ImgClass.src import model as m
 
 import logging
 LOGGER = logging.getLogger()

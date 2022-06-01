@@ -1,13 +1,12 @@
 import click
 
-from hello.src import DataClass
-from hello.src import model as m
+from ImgClass.src import DataClass
+from ImgClass.src import model as m
 
-from hello.src import there_command
-from hello.src import DataHandler as DH
+from ImgClass.src import DataHandler as DH
 import os
-from hello.src import training_command
-from hello.src import predict_command
+from ImgClass.src import training_command
+from ImgClass.src import predict_command
 
 @click.group()
 @click.version_option(package_name="image_classifier")
@@ -27,7 +26,7 @@ def main():
 @click.option("--output","-o",type=click.STRING,help="Changes where the file will be created to store analysis about the model creation process.")
 #@click.option("--save_model", "-sm", type=bool, help="Whether or not you would like to save the model (True or False).")
 def train(training, batch, epochs, model, height, width, confidence_threshold, output):
-    # Make a call to the model if it needs to be trained and saved somewhere
+    """Trains on data to create a new model."""
     print(epochs)
     epochsV = 8
     batchV = 32
@@ -43,9 +42,6 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
     print("Training", training)
 
 
-    if save_model:
-        saveV = save_model
-        print(save_model)
     if epochs:
         epochsV = epochs
         #print(epocs)
@@ -98,7 +94,7 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
 @click.option("--nr", is_flag = True)
 
 def predict( testing, batch, epochs, model, height, width, confidence_threshold, output, nr):
-    # Make a call to the model if it needs to be trained and saved somewhere
+    """Runs Classification Prediction using provided model."""
     print(epochs)
     epochsV = 8
     batchV = 32
@@ -114,9 +110,6 @@ def predict( testing, batch, epochs, model, height, width, confidence_threshold,
 
     print("Testing", testing)
 
-    if save_model:
-        saveV = save_model
-        print(save_model)
     if epochs:
         epochsV = epochs
         # print(epocs)

@@ -1,8 +1,8 @@
 import logging
 import os
-from hello.src import DataHandler as DH
-from hello.src import DataClass
-from hello.src import model as m
+from ImgClass.src import DataHandler as DH
+from ImgClass.src import DataClass
+from ImgClass.src import model as m
 from tensorflow import keras
 import keras.layers
 import shutil

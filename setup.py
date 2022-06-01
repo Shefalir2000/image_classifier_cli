@@ -23,7 +23,7 @@ dependency_links = [
 
 setup(
     name="image_classifier_cli",
-    description="Hello Template is a quick example and template for easily starting a pypi project.",
+    description="Image Classifier is an easy tool that is able to help you create a new AI/ML model and predict on data using that or any model.",
     include_package_data=True,
     package_data={"": ["*.txt"]},
     version="0.0.1",
@@ -32,17 +32,17 @@ setup(
     python_requires=">=3.10",  # any python greater than 2.7
     entry_points="""
         [console_scripts]
-        hello=hello.__main__:main
+        ImgClass=ImgClass.__main__:main
     """,
-    author="Austin Ruth",
-    keywords="template, hello, easy, project, python",
+    author="Shefali Ranjan and Tyler Kwok",
+    keywords="template, ImgClass, predict, train, easy, project, python",
     long_description=README,
     long_description_content_type="text/markdown",
     license="Apache 2.0",
-    url="https://github.com/rutheferd/hello",
+    url="https://github.com/Shefalir2000/image_classifier_cli",
     download_url="",
     dependency_links=dependency_links,
-    author_email="aruth3@gatech.edu",
+    author_email="shefalir@vt.edu",
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.10",

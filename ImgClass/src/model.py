@@ -13,8 +13,8 @@ from tensorflow import keras
 from keras import models
 import keras.layers
 # I'm not sure if the size of the videos is set, if not these variables can be adaptive. 1 is a place holder
-from hello.src import DataClass
-from hello.src import DataHandler as DH
+from ImgClass.src import DataClass
+from ImgClass.src import DataHandler as DH
 import logging
 LOGGER = logging.getLogger()
 
@@ -128,55 +128,4 @@ def makePrediction(image, class_names):
 
 
     return class_names[np.argmax(score)], 100 * np.max(score)
-
-
-
-"""
-def run(numEpocs, numBatchSize, trainingPath, testingPath, height, width, modelPath, conf_thresh_val, output_loc):
-    if output_loc == "Output":
-        try:
-            os.mkdir("Output")
-            #logger.info("Make the Output directory")
-        except:
-            for f in os.listdir("Output"):
-                os.remove(os.path.join("Output", f))
-            #logger.info("Cleared Output directory")
-        print(os.getcwd())
-        #shutil.move(os.getcwd()+"logs.log", os.getcwd()+"Output")
-
-
-    # set the data here
-    d = DataClass.Parameters()
-    #numEpocs, numBatchSize, height, width, trainingPath, testingPath, modelPath
-    d.num_epochs = numEpocs
-    d.batch_size = numBatchSize
-    d.height_pixels = height
-    d.width_pixels = width
-    d.training_file = trainingPath
-    d.test_file = testingPath
-    d.model_file = modelPath
-    d.output_location = output_loc
-    if modelPath == "":
-        training_d, validation = DH.change_input()
-        if conf_thresh_val == -1:
-            conf_thresh_val = 1/len(training_d.class_names)
-        d.num_confidence = conf_thresh_val
-        model = createModel(len(training_d.class_names))
-        trainModel(training_d, validation)
-        DH.categorize(d.num_confidence, training_d)
-    else:
-        training_d, validation = DH.change_input()
-        if conf_thresh_val == -1:
-            conf_thresh_val = 1/len(training_d.class_names)
-        d.num_confidence = conf_thresh_val
-        model = keras.models.load_model(modelPath)
-        model.summary()
-        trainModel(training_d, validation)
-        DH.categorize(d.num_confidence, training_d)
-
-    return
-    """
-
-
-
 
