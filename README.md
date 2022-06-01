@@ -120,3 +120,78 @@ I suggest reading through the comments of the project and reading about the pack
 When running this program in python make sure that you reinstall the packages after all the chnages you make adn before each run. If you do not run this command your changes will not be saved. 
 The function call you must use is ```pip install .```
 
+
+### Usage
+
+ImgClass was built using Click for a better CLI. Each "argument" is defined as an option for ease of use, however, keep in mind some options are required. 
+
+To see all available commands and options
+
+``` ImgClass --help ```
+
+## Command: train
+
+``` ImgClass train -tr "location of training data" [options]```
+
+To see all options and explainations:
+
+``` ImgClass train --help```
+
+In the following example a user would connect their complete path to the data after the -tr flag and would include any other flags they would deam appropriate.
+
+#### Example:
+
+``` ImgClass train -tr "C:\Program Files\Training_data" ```
+
+output:
+
+```
+2022-06-01 11:30:45.938158: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Found 500 files belonging to 5 classes.
+Using 100 files for validation.
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ rescaling (Rescaling)       (None, 400, 400, 3)       0
+
+ conv2d (Conv2D)             (None, 400, 400, 16)      448
+
+ max_pooling2d (MaxPooling2D  (None, 200, 200, 16)     0
+ )
+
+ conv2d_1 (Conv2D)           (None, 200, 200, 32)      4640
+
+ max_pooling2d_1 (MaxPooling  (None, 100, 100, 32)     0
+ 2D)
+
+ flatten (Flatten)           (None, 320000)            0
+
+ dropout (Dropout)           (None, 320000)            0
+
+ dense (Dense)               (None, 64)                20480064
+
+ dropout_1 (Dropout)         (None, 64)                0
+
+ dense_1 (Dense)             (None, 64)                4160
+
+ dense_2 (Dense)             (None, 5)                 325
+
+=================================================================
+Total params: 20,489,637
+Trainable params: 20,489,637
+Non-trainable params: 0
+_________________________________________________________________
+13/13 [==============================] - 16s 1s/step - loss: 11.4800 - accuracy: 0.1550 - val_loss: 1.6728 - val_accuracy: 0.2700
+INFO:tensorflow:Assets written to: C:\Users\sranjan31\Source\clitoolpleasework\image_classifier_cli/Output/Model_Version1\assets
+Train
+```
+
+
+
+
+
+
+
+
