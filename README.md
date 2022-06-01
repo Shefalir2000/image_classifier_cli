@@ -1,112 +1,3 @@
-# Hello: A simple, first python project template
-
-## Summary
-Hello is a simple CLI tool meant to get users started with a deliverable project. It showcases the use of [Click](https://click.palletsprojects.com/en/8.1.x/) and a glimpse into [logging](https://docs.python.org/3/howto/logging.html) for "proper" tool development. It also includes everything needed to deliver and install a pypi compatible project, as well as the infrastructure needed to product a portable container for the project. The details below dive more into how to use this project as well as how to install and see it in action!
-
-I first suggest installing and playing with the CLI if you aren't familiar with that process. If you are, skip to [Make it My Own](#make-it-my-own) section to see what you can do to start creating your own tool.
-
-Finally, use this readme as a guide to writing a readme for your next project!
-
-### Installation
-
-#### Container
-You can run everything using the latest container release:
-
-First pull the container:
-
-```podman pull [image]```
-
-Then run the command using the newly pulled container:
-
-```podman run [image] hello COMMAND [options]```
-
-#### Python
-Hello can also be installed locally as a python CLI tool:
-
-```python setup.py install```
-
-## Usage
-Hello was built using Click for a better CLI user experience. Each "argument" is defined as an option for ease of use, but note that some of the options are required (see Options below).
-
-To see all available commands and options:
-
-```hello --help```
-
-### Command: there
-
-```hello there [options]```
-
-For help:
-
-```hello there --help```
-
-In the following example a user would connect to their instance of Label Studio using their host path and API token _You can find your user token on the User Account page in Label Studio_. They are then specifying the project id and the VOC export type (VOC being used generally for Tensorflow object detection projects):
-
-#### Example:
-
-```
-hello there -n Austin -g
-```
-
-output: Hello there Austin, how are you?
-
-#### Options:
-
-`--name, -n [String]`: Name that you would like to include in the greeting. [required]
-
-`--greeting, -g`: Adds "how are you?" to the greeting.
-
-
-## Contributing
-
-Thanks for considering, we need your contributions to help this project come to fruition.
-
-Here are some important resources:
-
-- Bugs? [Issues](https://github.com/rutheferd/hello_template/issues) is where to report them!
-- Please utilize pre-commits or manually invoke black and flake8 to ensure style compliance.
-
-## Make it My Own
-
-1. First things first, change the `/hello` directory to whatever you'd like the name of the project to be!
-
-2. Write some tests! You can add python test files to `/tests` see [pytest](https://docs.pytest.org/en/7.1.x/) for more information on pytest for testing. Also check out `tests/test_there.py` for a simple example.
-
-3. Add you python file(s) under `hello/src`. For greater compliance with click, check `hello/src/there_command.py` for an exmaple.
-
-4. For argument handling we are using [Click](https://click.palletsprojects.com/en/8.1.x/), and an simple example is available in `hello/__main__.py`. Note that you will need to import your code from source to run in the `__main__.py` file. See the imports at the top for an example.
-
-5. In the `requirements.txt` update with all of the packages that your code will expect to have.
-
-6. Now you need to modify the `setup.py` file:
-    - Update `name` to your new project name
-    - Update `description` to something compelling for your project.
-    - Update `python_requires` with the mininum required python version for your project.
-    - Update `entry_points` with the name of the folder updated in step one, see the exmaple for better understanding.
-    - Update the `author, keywords, license, url, author_email` with the relevant information.
-
-And that should be it! Congratulations, you should now be able to isntall your project and run it as a CLI tool. 
-**Note** that this is a simplified guide to how you can setup your project, and is really the bare minimum to get you going. I will leave it to you to leave an issue asking further questions, or do some digging and contribute what you've learned to the project and this guide!
-
-🚧 Gitlab implementation coming soon! 🚧
-
-## License
-
-   Copyright 2022 Austin Ruth
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-
-
 # Image Classifier: A simple tool to create and test models
 
 ## Summary
@@ -143,7 +34,7 @@ In the following example a user would connect their complete path to the data af
 
 ``` ImgClass train -tr "C:\Program Files\Training_data" ```
 
-output:
+Output:
 
 ```
 2022-06-01 11:30:45.938158: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
@@ -215,8 +106,55 @@ Train
                                   	store analysis about the model creation
                                   	process.
 
-  --help                          	Show this message and exit.
+  ```--help```                          Show this message and exit.
 
+## Command: predict
+
+``` ImgClass predict -te "location of testing data" -m "location of the model" [options]```
+
+To see all options and explainations:
+
+``` ImgClass predict --help```
+
+In the following example a user would connect their complete path to the data after the -tr flag and would include any other flags they would deam appropriate.
+
+#### Example:
+
+``` ImgClass predict -te "C:\Program Files\Testing_data" -m "C:\Program Files\model" ```
+
+Output:
+
+```
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+['AK', 'Ala_Idris', 'Buzgulu', 'Dimnit']
+list C:\Users\sranjan31\PycharmProjects\imgClassifierTest\gtriScreenClassification\testing_set\Grapevine
+sub AK
+Ak (1).png
+1/1 [==============================] - 0s 172ms/step
+[[-3.5455697 -3.6295052 -4.079938  -2.8049839 -4.71748  ]]
+This image most likely belongs to Dimnit with a 42.69 percent confidence.
+tf.Tensor([0.20356365 0.18717486 0.11929631 0.4269063  0.06305884], shape=(5,), dtype=float32)
+Ak (2).png
+1/1 [==============================] - 0s 47ms/step
+[[-2.8605902 -2.693569  -2.986797  -2.099851  -3.579639 ]]
+This image most likely belongs to Dimnit with a 37.61 percent confidence.
+tf.Tensor([0.1757381  0.20768368 0.15490127 0.37605453 0.08562233], shape=(5,), dtype=float32)
+Ak (3).png
+1/1 [==============================] - 0s 63ms/step
+[[-2.652342  -2.44133   -2.895125  -1.9432619 -3.2940793]]
+This image most likely belongs to Dimnit with a 36.43 percent confidence.
+tf.Tensor([0.17927998 0.22139776 0.14063472 0.36431867 0.0943689 ], shape=(5,), dtype=float32)
+Ak (4).png
+1/1 [==============================] - 0s 63ms/step
+[[-2.916375  -2.7565088 -2.9098601 -2.1177814 -3.6556222]]
+This image most likely belongs to Dimnit with a 37.80 percent confidence.
+tf.Tensor([0.17007451 0.19955756 0.17118612 0.3779758  0.08120601], shape=(5,), dtype=float32)
+Ak (5).png
+1/1 [==============================] - 0s 47ms/step
+[[-2.8134582 -2.6721783 -3.0457902 -2.1349456 -3.554397 ]]
+This image most likely belongs to Dimnit with a 36.55 percent confidence.
+tf.Tensor([0.18545856 0.21360134 0.14700983 0.3655284  0.08840182], shape=(5,), dtype=float32)
+```
 #### Options:
 
   ```-m, --model TEXT```                If a model exists then use the model that
