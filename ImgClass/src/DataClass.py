@@ -2,6 +2,8 @@ from dataclasses import dataclass
 
 from tensorflow import keras
 
+# Singleton class so that we can keep all the initial passed in variables in 
+# one place and so that they can be accessed from all locations
 
 class Singleton(type):
     _instances = {}
@@ -10,6 +12,8 @@ class Singleton(type):
         if cls not in cls._instances:
             cls._instances[cls] = super().__call__(*args, **kwargs)
         return cls._instances[cls]
+
+#all the different parameters that are passes in as flags
 
 @dataclass(frozen=False)
 class Parameters(metaclass=Singleton):

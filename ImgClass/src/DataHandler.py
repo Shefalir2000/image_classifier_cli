@@ -30,6 +30,8 @@ def change_input():
     batch_size = data.batch_size
     image_size = (data.height_pixels, data.width_pixels)
     seedNum = r.randint(1,10000)
+    
+    #convert the data into TFRecord Files so they can be easily processed
     train_ds = tf.keras.preprocessing.image_dataset_from_directory(
         input_file,
         validation_split=0.2,
@@ -49,11 +51,13 @@ def change_input():
 
     return train_ds, val_ds
 
+# resize the images
 def scale_resize(image, label):
     image = tf.image.convert_image_dtype(image, tf.float32)
     image = tf.image.resize(image,(224,224))
     return (image,label)
 
+# resize the data set
 def scale_resize_dataset(dataset):
     ds = (
         dataset
@@ -63,6 +67,7 @@ def scale_resize_dataset(dataset):
     )
     return ds
 
+# testing the predictions to check accuracy
 def testing(file_name, path, height, width,modelInput,train_ds):
     
     path_file = path + "/" + file_name
@@ -71,7 +76,7 @@ def testing(file_name, path, height, width,modelInput,train_ds):
     predictions = m.makePrediction(modelInput, img_array, train_ds.class_names)
     return predictions
 
-
+#gathering the data confidence
 def gathering_data_confidence(train_ds):
     height = data.height_pixels
     width = data.width_pixels
@@ -96,6 +101,7 @@ def gathering_data_confidence(train_ds):
                     # add the prediction for that file in the colorV3 list
                     predict_colorsV3.append(prediction)
 
+#categorizing the images and making the markdown file
 def categorize(confidence_threshold, class_names):
     testing_directory_name = data.test_file
 
@@ -120,8 +126,6 @@ def categorize(confidence_threshold, class_names):
     above_avg_accuracy, above_avg_confidence = caluclate_average(above_threshold)
     below_avg_accuracy, below_avg_confidence = caluclate_average(below_threshold)
     if(data.make_report):
-        #mdFile = MdUtils(file_name=data.output_location+"/Confidence and Accuracy Report",
-        # title="Confidence and Accuracy Report")
         mdFile = MdUtils(file_name=data.model_file + "/Confidence and Accuracy Report",
                          title="Confidence and Accuracy Report")
 
@@ -157,6 +161,7 @@ def categorize(confidence_threshold, class_names):
         LOGGER.info("Report generated")
     LOGGER.info("Finished predicting test data ")
 
+#caluclate the average accuracy and confidence for the markdown file
 def caluclate_average(threshold_list):
     avg_confidence = 0
     avg_accuracy = 0

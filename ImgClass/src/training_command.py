@@ -8,7 +8,10 @@ import keras.layers
 import logging
 
 
+# initialize all the parameters for this file
 data = DataClass.Parameters()
+
+# try to load in the model
 try:
     model = keras.models.load_model(data.model_file)
 except:
@@ -16,20 +19,18 @@ except:
 
 
 
-
+# the run function for the train command
+# this function is useful if you want to add 
+# any additional twists to this command
 def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV):
     print("I am hereeee")
     if outputV == "Output":
-        #had to add this because if the output file didn't exist, it would fail
-        # try:
-        #     shutil.rmtree(outputV)
-        # except:
-        #     print("No output file found. Making one.")
         try:
             os.mkdir("Output")
         except:
             print("Output file exists")
 
+    #logging base
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
     logging.basicConfig(
@@ -44,11 +45,11 @@ def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outp
 
     return
 
-
+#function for how to train a model
 def train(numEpocs, numBatchSize, trainingPath, testingPath, height, width, modelPath, conf_thresh_val, output_loc):
-    print("training in runfile.")
+    #print("training in runfile.")
 
-        # set the data here
+    # set the data here
     d = DataClass.Parameters()
     d.num_epochs = numEpocs
     d.batch_size = numBatchSize
@@ -59,18 +60,25 @@ def train(numEpocs, numBatchSize, trainingPath, testingPath, height, width, mode
     d.model_file = modelPath
     d.output_location = output_loc
 
+    #if there is no model
     if modelPath == "":
-        print("IF")
+        # convert the data and calculate the conf_thresh if not already provided
         training_d, validation = DH.change_input()
         if conf_thresh_val == -1:
             conf_thresh_val = 1 / len(training_d.class_names)
         d.num_confidence = conf_thresh_val
+
+        #create and train a model
         m.createModel(len(training_d.class_names))
         m.trainModel(training_d, validation)
         model_name = "Model_Version1"
+    #if an model already exist
     else:
+        # get the model
         model_name = data.model_file.rsplit('/',1)[-1]
         model_name = model_name.rsplit('\\',1)[-1]
+
+        # version control
         global version_num
         if(model_name.__contains__("Version")):
             version_num = model_name[model_name.index("Version") + 7]
@@ -78,14 +86,19 @@ def train(numEpocs, numBatchSize, trainingPath, testingPath, height, width, mode
         else:
             model_name = model_name +"Version2"
             version_num = 2
+        
+        #create and train a model also calculate the conf_thresh
         training_d, validation = DH.change_input()
         if conf_thresh_val == -1:
             conf_thresh_val = 1 / len(training_d.class_names)
         d.num_confidence = conf_thresh_val
+
+        #load the model and retrain the model
         data.model = keras.models.load_model(modelPath)
         data.model.summary()
         m.trainModel(training_d, validation)
 
+    # save the output in the correct location
     if output_loc == "Output":
         data.model.save(os.getcwd() + "/Output/" + model_name)
         data.plot.savefig(os.getcwd() + "/Output/" + model_name +"/train_data.png")

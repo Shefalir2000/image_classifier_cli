@@ -12,6 +12,7 @@ from keras.layers import MaxPooling2D
 from tensorflow import keras
 from keras import models
 import keras.layers
+
 # I'm not sure if the size of the videos is set, if not these variables can be adaptive. 1 is a place holder
 from ImgClass.src import DataClass
 from ImgClass.src import DataHandler as DH
@@ -96,7 +97,7 @@ def trainModel(train_dataset, validation_dataset):
     plt.title('Training and Validation Loss')
     data.plot = plt
 
-
+# making a prediction based on the model and the images
 def makePrediction(image, class_names):
     model = data.model
 
