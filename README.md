@@ -187,6 +187,69 @@ _________________________________________________________________
 INFO:tensorflow:Assets written to: C:\Users\sranjan31\Source\clitoolpleasework\image_classifier_cli/Output/Model_Version1\assets
 Train
 ```
+#### Options:
+
+  ```-m, --model TEXT```                If a model exists then use the model that
+                                  	will be tested.
+
+  ```-tr, --training TEXT```            Adds the data that the model will be trained
+                                  	on.  [required]
+
+  ```-e, --epochs INTEGER```            Changes the number of epochs that will be
+                                  	done during training.
+
+  ```-b, --batch INTEGER```             Changes the batch number that will be used
+                                  	during training.
+
+  ```-h, --height INTEGER```            Changes the height of the images during
+                                  	training.
+
+  ```-ct, --confidence_threshold INTEGER```
+                                  	Changes the height of the images during
+                                  	training.
+
+  ```-w, --width INTEGER```             Changes the width of the images during
+                                  	training.
+
+  ```-o, --output TEXT```               Changes where the file will be created to
+                                  	store analysis about the model creation
+                                  	process.
+
+  --help                          	Show this message and exit.
+
+#### Options:
+
+  ```-m, --model TEXT```                If a model exists then use the model that
+                                  	will be tested.  [required]
+
+  ```-te, --testing TEXT```             Adds the data that the model will be tested
+                                  	on.  [required]
+
+  ```-e, --epochs INTEGER```            Changes the number of epochs that will be
+                                  	done during training.
+
+  ```-b, --batch INTEGER```             Changes the batch number that will be used
+                                  	during training.
+
+  ```-h, --height INTEGER```            Changes the height of the images during
+                                  	training.
+
+  ```-ct, --confidence_threshold INTEGER```
+                                  	Changes the height of the images during
+                                  	training.
+
+  ```-w, --width INTEGER```             Changes the width of the images during
+                                  	training.
+
+  ```-o, --output TEXT```               Changes where the file will be created to
+                                  	store analysis about the model creation
+                                  	process.
+
+  ```--nr```				Decide whether the report is generated or
+                                  	not. If nothing is entered the report will
+                                  	be generated.
+
+  ```--help```                          Show this message and exit.
 
 
 
