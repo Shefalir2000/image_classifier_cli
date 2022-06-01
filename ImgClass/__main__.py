@@ -1,9 +1,9 @@
 import click
 
-from ImgClass.src import DataClass
+'''from ImgClass.src import DataClass
 from ImgClass.src import model as m
 
-from ImgClass.src import DataHandler as DH
+from ImgClass.src import DataHandler as DH'''
 import os
 from ImgClass.src import training_command
 from ImgClass.src import predict_command
@@ -12,7 +12,7 @@ from ImgClass.src import predict_command
 @click.version_option(package_name="image_classifier")
 def main():
     """Image Classifier is a CLI tool that creates a machine learning model to classify images"""
-    #model.
+    
     pass
 
 @main.command()
@@ -24,10 +24,10 @@ def main():
 @click.option("--confidence_threshold","-ct",type=int,help = "Changes the height of the images during training.")
 @click.option("--width","-w",type=int,help = "Changes the width of the images during training.")
 @click.option("--output","-o",type=click.STRING,help="Changes where the file will be created to store analysis about the model creation process.")
-#@click.option("--save_model", "-sm", type=bool, help="Whether or not you would like to save the model (True or False).")
+
 def train(training, batch, epochs, model, height, width, confidence_threshold, output):
     """Trains on data to create a new model."""
-    print(epochs)
+    
     epochsV = 8
     batchV = 32
     heightV = 400
@@ -39,24 +39,21 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
     outputV = "Output"
     saveV = ""
 
-    print("Training", training)
-
-
     if epochs:
         epochsV = epochs
-        #print(epocs)
+
     if confidence_threshold:
         ctV = confidence_threshold
-        #print(confidence_threshold)
+        
     if batch:
         batchV = batch
-        #print(batch)
+       
     if height:
         heightV = height
-        #print(heightV)
+        
     if width:
         widthV = width
-        #print(weightV)
+        
     if output:
         outputV = output
     if model:
@@ -75,10 +72,9 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
             raise FileNotFoundError("This path does not exist.")
         trainingV = training
         print(training)
-    print("ADS")
-    #run.runTraining(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV, saveV)
+    
     training_command.run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV)
-    print("Train")
+    
     return
 
 @main.command()
@@ -90,12 +86,11 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
 @click.option("--confidence_threshold","-ct",type=int,help = "Changes the height of the images during training.")
 @click.option("--width","-w",type=int,help = "Changes the width of the images during training.")
 @click.option("--output","-o",type=click.STRING,help="Changes where the file will be created to store analysis about the model creation process.")
-#@click.option("--save_model", "-sm", type=bool, help="Whether or not you would like to save the model (True or False).")
-@click.option("--nr", is_flag = True)
+@click.option("--nr", is_flag = True, help="Decide whether the report is generated or not. If nothing is entered the report will be generated.")
 
 def predict( testing, batch, epochs, model, height, width, confidence_threshold, output, nr):
     """Runs Classification Prediction using provided model."""
-    print(epochs)
+    
     epochsV = 8
     batchV = 32
     heightV = 400
@@ -112,26 +107,26 @@ def predict( testing, batch, epochs, model, height, width, confidence_threshold,
 
     if epochs:
         epochsV = epochs
-        # print(epocs)
+        
     if confidence_threshold:
         ctV = confidence_threshold
-        # print(confidence_threshold)
+        
     if batch:
         batchV = batch
-        # print(batch)
+        
     if height:
         heightV = height
-        # print(heightV)
+        
     if width:
         widthV = width
-        # print(weightV)
+        
     if output:
         if not os.path.isdir(output):
             raise ValueError("Model is not in a directory.")
         elif not os.path.exists(output):
             raise FileNotFoundError("This path does not exist.")
         outputV = output
-        #print(output)
+        
 
     if model:
         # if mode is not in correct directory throw an exception
@@ -140,7 +135,7 @@ def predict( testing, batch, epochs, model, height, width, confidence_threshold,
         elif not os.path.exists(model):
             raise FileNotFoundError("This path does not exist.")
         modelV = model
-        #print(model)
+        
     if testing:
         # if mode is not in correct directory throw an exception
         if not os.path.isdir(testing):
@@ -148,12 +143,12 @@ def predict( testing, batch, epochs, model, height, width, confidence_threshold,
         elif not os.path.exists(testing):
             raise FileNotFoundError("This path does not exist.")
         testingV = testing
-        #print(testing)
+        
     if nr:
         make_reportV = False
 
 
-    #runTesting()
+    
     predict_command.run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV, make_reportV)
     print("test")
     return
