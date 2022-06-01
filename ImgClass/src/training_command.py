@@ -29,13 +29,6 @@ def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outp
             os.mkdir("Output")
         except:
             print("Output file exists")
-        """for f in os.listdir("Output"):
-            if os.path.isdir(outputV+"/"+f):
-                shutil.rmtree(outputV+"/"+f)
-            elif f == "logs.log":
-                continue
-            else:
-                os.remove(outputV+'/'+f)"""
 
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
@@ -55,12 +48,8 @@ def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outp
 def train(numEpocs, numBatchSize, trainingPath, testingPath, height, width, modelPath, conf_thresh_val, output_loc):
     print("training in runfile.")
 
-        # shutil.move(os.getcwd()+"logs.log", os.getcwd()+"Output")
-
-    #raise Exception("just kidding")
         # set the data here
     d = DataClass.Parameters()
-    # numEpocs, numBatchSize, height, width, trainingPath, testingPath, modelPath
     d.num_epochs = numEpocs
     d.batch_size = numBatchSize
     d.height_pixels = height

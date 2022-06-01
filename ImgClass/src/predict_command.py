@@ -47,7 +47,6 @@ def predict(numEpocs, numBatchSize, testingPath, height, width, modelPath, conf_
         raise Exception("You must have a model to predict values.")
 
     else:
-        #training_d, validation = DH.change_input()
         numClasses = list()
         for i in os.listdir(testingPath):
             #Fixed bug here where num classes would be empty due to i alone not being a valid directory
@@ -58,14 +57,5 @@ def predict(numEpocs, numBatchSize, testingPath, height, width, modelPath, conf_
             conf_thresh_val = 1 / len(numClasses)
         d.num_confidence = conf_thresh_val
         m.model = keras.models.load_model(modelPath)
-        #model.summary()
-        #m.trainModel(training_d, validation)
         DH.categorize(d.num_confidence, numClasses)
-
-    # we are no longer saving the model in the predict function
-    # if saveV:
-    #     if output_loc == "Output":
-    #         m.model.save(os.getcwd() + "/Output/Model")
-    #     else:
-    #         m.model.save(output_loc + "/Model")
     return

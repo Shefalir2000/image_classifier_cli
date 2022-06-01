@@ -18,12 +18,6 @@ from ImgClass.src import DataHandler as DH
 import logging
 LOGGER = logging.getLogger()
 
-"""
-TODO:
-Make sure all different size images in the input parameter sizes change
-
-other solution: insert parameters in the application
-"""
 
 
 version_num = 1
@@ -102,7 +96,7 @@ def trainModel(train_dataset, validation_dataset):
     plt.title('Training and Validation Loss')
     data.plot = plt
 
-#def makePrediction(model, image, class_names):
+
 def makePrediction(image, class_names):
     model = data.model
 
