@@ -7,6 +7,10 @@ from ImgClass.src import DataHandler as DH'''
 import os
 from ImgClass.src import training_command
 from ImgClass.src import predict_command
+from ImgClass.src import DataClass
+
+
+data = DataClass.Parameters()
 
 @click.group()
 @click.version_option(package_name="image_classifier")
@@ -23,7 +27,7 @@ def main():
 @click.option("--height","-h",type=int,help = "Changes the height of the images during training.")
 @click.option("--confidence_threshold","-ct",type=int,help = "Changes the height of the images during training.")
 @click.option("--width","-w",type=int,help = "Changes the width of the images during training.")
-@click.option("--output","-o",type=click.STRING,help="Changes where the file will be created to store analysis about the model creation process.")
+@click.option("--output","-o",type=click.STRING,required=True,help="Changes where the model and analysis will be saved.")
 
 def train(training, batch, epochs, model, height, width, confidence_threshold, output):
     """Trains on data to create a new model."""
@@ -41,21 +45,32 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
 
     if epochs:
         epochsV = epochs
+        data.num_epochs = epochs
 
     if confidence_threshold:
         ctV = confidence_threshold
+        data.num_confidence = confidence_threshold
         
     if batch:
         batchV = batch
+        data.batch_size = batch
        
     if height:
         heightV = height
+        data.height_pixels = height
         
     if width:
         widthV = width
+        data.width_pixels = width
         
     if output:
+        print("I am printing output", output)
+        if not os.path.isdir(output):
+            raise ValueError("Model is not in a directory.")
+        elif not os.path.exists(output):
+            raise FileNotFoundError("This path does not exist.")
         outputV = output
+        data.output_location = output
     if model:
         # if mode is not in correct directory throw an exception
         if not os.path.isdir(model):
@@ -85,7 +100,7 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
 @click.option("--height","-h",type=int,help = "Changes the height of the images during training.")
 @click.option("--confidence_threshold","-ct",type=int,help = "Changes the height of the images during training.")
 @click.option("--width","-w",type=int,help = "Changes the width of the images during training.")
-@click.option("--output","-o",type=click.STRING,help="Changes where the file will be created to store analysis about the model creation process.")
+@click.option("--output","-o",type=click.STRING,required=True,help="Changes where the file will be created to store analysis about the model creation process.")
 @click.option("--nr", is_flag = True, help="Decide whether the report is generated or not. If nothing is entered the report will be generated.")
 
 def predict( testing, batch, epochs, model, height, width, confidence_threshold, output, nr):
@@ -107,18 +122,23 @@ def predict( testing, batch, epochs, model, height, width, confidence_threshold,
 
     if epochs:
         epochsV = epochs
+        data.num_epochs = epochs
         
     if confidence_threshold:
         ctV = confidence_threshold
+        data.num_confidence = confidence_threshold
         
     if batch:
         batchV = batch
+        data.batch_size = batch
         
     if height:
         heightV = height
+        data.height_pixels = height
         
     if width:
         widthV = width
+        data.width_pixels = width
         
     if output:
         if not os.path.isdir(output):
@@ -126,6 +146,7 @@ def predict( testing, batch, epochs, model, height, width, confidence_threshold,
         elif not os.path.exists(output):
             raise FileNotFoundError("This path does not exist.")
         outputV = output
+        data.output_location = output
         
 
     if model:
@@ -146,6 +167,7 @@ def predict( testing, batch, epochs, model, height, width, confidence_threshold,
         
     if nr:
         make_reportV = False
+        data.make_report = False
 
 
     
