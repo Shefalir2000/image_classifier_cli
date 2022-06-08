@@ -158,8 +158,7 @@ tf.Tensor([0.18545856 0.21360134 0.14700983 0.3655284  0.08840182], shape=(5,), 
 ```
 #### Options:
 
-  ```-m, --model TEXT```                If a model exists then use the model that
-                                  	will be tested.  [required]
+  ```-m, --model TEXT```                Conducts the predictions using the model that is passed in.  [required]
 
   ```-te, --testing TEXT```             Adds the data that the model will be tested
                                   	on.  [required]
