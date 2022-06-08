@@ -95,10 +95,6 @@ Train
   ```-h, --height INTEGER```            Changes the height of the images during
                                   	training.
 
-  ```-ct, --confidence_threshold INTEGER```
-                                  	Changes the height of the images during
-                                  	training.
-
   ```-w, --width INTEGER```             Changes the width of the images during
                                   	training.
 
@@ -164,24 +160,24 @@ tf.Tensor([0.18545856 0.21360134 0.14700983 0.3655284  0.08840182], shape=(5,), 
                                   	on.  [required]
 
   ```-e, --epochs INTEGER```            Changes the number of epochs that will be
-                                  	done during training.
+                                  	done during training.*
 
   ```-b, --batch INTEGER```             Changes the batch number that will be used
-                                  	during training.
+                                  	during training.*
 
   ```-h, --height INTEGER```            Changes the height of the images during
-                                  	training.
+                                  	training.*
 
   ```-ct, --confidence_threshold INTEGER```
                                   	Changes the height of the images during
-                                  	training.
+                                  	training.*
 
   ```-w, --width INTEGER```             Changes the width of the images during
-                                  	training.
+                                  	training.*
 
   ```-o, --output TEXT```               Changes where the file will be created to
                                   	store analysis about the model creation
-                                  	process.
+                                  	process.*
 
   ```--nr```				Decide whether the report is generated or
                                   	not. If nothing is entered the report will
