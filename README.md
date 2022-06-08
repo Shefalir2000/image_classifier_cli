@@ -28,7 +28,7 @@ To see all options and explainations:
 
 ``` ImgClass train --help```
 
-In the following example a user would connect their complete path to the data after the -tr flag and would include any other flags they would deam appropriate.
+In the following example a user would connect their complete path to the data after the -tr flag and would include any other flags they would deam appropriate. The tool would then train and save a new or existing model to the designated output folder.
 
 #### Example:
 
@@ -81,7 +81,7 @@ Train
 #### Options:
 
   ```-m, --model TEXT```                If a model exists then use the model that
-                                  	will be tested.
+                                  	will be trained.
 
   ```-tr, --training TEXT```            Adds the data that the model will be trained
                                   	on.  [required]
@@ -104,7 +104,8 @@ Train
 
   ```-o, --output TEXT```               Changes where the file will be created to
                                   	store analysis about the model creation
-                                  	process.
+                                  	process. If no input, will generate an "Output" file in 
+                                   the root directory 
 
   ```--help```                          Show this message and exit.
 
