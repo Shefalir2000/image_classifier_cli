@@ -12,7 +12,7 @@ I suggest reading through the comments of the project and reading about the pack
 #### Python
 
 When running this program in python make sure that you reinstall the packages after all the changes you make and before each run. If you do not run this command your changes will not be saved. 
-The function call you must use is ```pip install .```
+The function call you must use is ```python setup.py install```
 
 #### Testing
 When testing the predict and train commands you should run the ```pytest``` command. This command should be run from the top most directory. In the case of this CLI tool this ```pytest``` should be run from the directory image_classifier_cli.
@@ -166,7 +166,7 @@ tf.Tensor([0.18545856 0.21360134 0.14700983 0.3655284  0.08840182], shape=(5,), 
 
 
   ```-ct, --confidence_threshold INTEGER```
-                                  	     Changes the height of the images during
+                                  	     Changes the weight of the images during
                                   	training.
 
   ```-o, --output TEXT```               Changes where the file will be created to
@@ -180,6 +180,19 @@ tf.Tensor([0.18545856 0.21360134 0.14700983 0.3655284  0.08840182], shape=(5,), 
   ```--help```                          Show this message and exit.
 
 
+## Common Errors:
+#### Installing packages is not working
+If you are running into an error where ```python setup.py install``` is not working another way to try and install the packages that you should try is ```pip install .```
+
+If the solution above is also not working you should use the command ```python --version``` or ```python3 --version``` to check the version of python and make sure the python version is above 3.10.
+
+#### In IceHammer the GPU is not working
+If you are running IceHammer and the GPUs are not working which is causing training and predicting to be slow or showing this warning:
+```W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH:```, here is what you should do.
+
+Try running this command ```nvidia-smi```. If this causes an error then your GPUs are not working and you should try these two commands:
+```conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0```
+```export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/```
 
 
 
