@@ -16,21 +16,20 @@ import os
 data = DataClass.Parameters()
 
 def test_train_function():
-    # print("function train test")
+    print("function train test")
     # training_set = "C:/Users/sranjan31/Source/clitoolpleasework/image_classifier_cli/tests/training_set"
     # print("command train test")
-    # print(os.getcwd())
 
-    runner = CliRunner()
-    name = "output_trainingF"
+    name = "output_testingF"
     training_set = "./testing_data/training_set"
     data.output_location = "./tests/"+ name
-    
+
     try:
         os.makedirs(data.output_location)
     except:
         shutil.rmtree(data.output_location)
         os.makedirs(data.output_location)
+    print("DL", data.output_location)
     
     #testing with number of epocs
     epochs = 1
@@ -83,7 +82,6 @@ def test_train_function():
             assert False
     #testing with an output location 
     result = training_command.run(8, 32, training_set, "", 400, 400, "", -1, data.output_location)
-    #print(outputLoc+"/Model_Version1")
     assert os.path.exists(data.output_location+"/Model_Version1")
     assert os.path.isdir(data.output_location+"/Model_Version1")
     for i in os.listdir(data.output_location+"/Model_Version1"):
@@ -93,7 +91,7 @@ def test_train_function():
             assert False
 
     #testing with model
-    model = data.output_location + "/Model_Version1"
+    model = data.output_location+"/Model_Version1"
     result = training_command.run(8, 32, training_set, "", 400, 400, model, -1, data.output_location)
     assert os.path.exists(data.output_location+"/Model_Version2")
     assert os.path.isdir(data.output_location+"/Model_Version2")
@@ -113,10 +111,10 @@ def test_train_command():
     # print("command train test")
     # print(os.getcwd())
     runner = CliRunner()
-    name = "output_trainingC"
+    name = "output_testingC"
     training_set = "./testing_data/training_set"
     data.output_location = "./tests/"+ name
-
+    #print(os.getcwd())
     try:
         os.makedirs(data.output_location)
     except:
@@ -180,9 +178,9 @@ def test_train_command():
     assert data.model != None 
     shutil.rmtree(data.output_location+"/Model_Version1")
     #testing with an output location 
-    outputLoc = os.getcwd() + "/tests/Here"
+    #outputLoc = os.getcwd() + "/tests/Here"
     result = runner.invoke(main, ["train", "-tr", training_set, "-o", data.output_location])
-    print(outputLoc+"/Model_Version1")
+    #print(outputLoc+"/Model_Version1")
     assert os.path.exists(data.output_location+"/Model_Version1")
     assert os.path.isdir(data.output_location+"/Model_Version1")
     for i in os.listdir(data.output_location+"/Model_Version1"):
@@ -252,4 +250,4 @@ def test_train_command():
 
 if __name__ == "__main__":
     test_train_command()
-    #test_train_function()
+    test_train_function()
