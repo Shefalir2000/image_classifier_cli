@@ -21,7 +21,7 @@ except:
 # this function is useful if you want to add 
 # any additional twists to this command
 # def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV, make_reportV):
-def run(testingV, modelV, ctV, outputV, make_reportV):
+def run(testingV, modelV, ctV, outputV, make_reportV, jsonV):
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
     logging.basicConfig(
@@ -30,6 +30,7 @@ def run(testingV, modelV, ctV, outputV, make_reportV):
         filename= outputV + "/logs.log",
         level=logging.INFO
     )
+    data.json = jsonV
     LOGGER = logging.getLogger()
     predict(testingV, modelV, ctV, outputV, make_reportV)
     LOGGER.info('Master runs')
@@ -78,6 +79,8 @@ def predict( testingPath, modelPath, conf_thresh_val, outputV, make_reportV):
     return
 
 def make_predict_json():
+    if not data.json:
+        return
     if exists(data.model_file + "/data.json"):
         with open(data.model_file + "/data.json", 'r+') as jason:
             datas = json.loads(jason.read())

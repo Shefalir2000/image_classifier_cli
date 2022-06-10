@@ -24,7 +24,7 @@ except:
 # the run function for the train command
 # this function is useful if you want to add 
 # any additional twists to this command
-def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV):
+def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV, jsonV):
     print("I am hereeee")
     if outputV == "Output":
         try:
@@ -41,6 +41,7 @@ def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outp
         filename=outputV+"/logs.log",
         level=logging.INFO
     )
+    data.json = jsonV
     LOGGER = logging.getLogger()
     train(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV)
     LOGGER.info('Master runs')
@@ -114,7 +115,8 @@ def train(numEpocs, numBatchSize, trainingPath, testingPath, height, width, mode
     return
 
 def make_training_json(model_name):
-
+    if not data.json:
+        return
     if exists(data.output_location + "/" + model_name + "/data.json"):
         with open (data.output_location + "/" + model_name + "/data.json", 'r+') as jason:
             arr = json.loads(jason.read())

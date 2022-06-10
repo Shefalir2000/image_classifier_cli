@@ -34,6 +34,7 @@ class Parameters(metaclass=Singleton):
     test_files_num = NotImplemented
     accuracy_below = NotImplemented
     accuracy_above = NotImplemented
+    json = False
 
 
 

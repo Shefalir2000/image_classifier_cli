@@ -28,10 +28,12 @@ def main():
 @click.option("--confidence_threshold","-ct",type=int,help = "Changes the height of the images during training.")
 @click.option("--width","-w",type=int,help = "Changes the width of the images during training.")
 @click.option("--output","-o",type=click.STRING,required=True,help="Changes where the model and analysis will be saved.")
+@click.option("--json", "-j", is_flag = False, help = "If this flag is present, a JSON file is generated")
 
-def train(training, batch, epochs, model, height, width, confidence_threshold, output):
+
+def train(training, batch, epochs, model, height, width, confidence_threshold, output, json):
     """Trains on data to create a new model."""
-    
+    jsonV = False    
     epochsV = 8
     batchV = 32
     heightV = 400
@@ -87,8 +89,11 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
             raise FileNotFoundError("This path does not exist.")
         trainingV = training
         print(training)
+    if json:
+        jsonV = True
+        data.json = True
     
-    training_command.run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV)
+    training_command.run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV, jsonV)
     
     return
 
@@ -103,11 +108,12 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
 # @click.option("--width","-w",type=int,help = "Changes the width of the images during training.")
 @click.option("--output","-o",type=click.STRING,required=True,help="Changes where the file will be created to store analysis about the model creation process.")
 @click.option("--nr", is_flag = True, help="Decide whether the report is generated or not. If nothing is entered the report will be generated.")
+@click.option("--json", "-j", is_flag = False, help = "If this flag is present, a JSON file is generated")
 
 # def predict( testing, batch, epochs, model, height, width, confidence_threshold, output, nr):
-def predict(output, testing, model, confidence_threshold, nr):
+def predict(output, testing, model, confidence_threshold, nr, json):
     """Runs Classification Prediction using provided model."""
-    
+    jsonV = False
     modelV = ""
     testingV = ""
     ctV = -1
@@ -164,11 +170,15 @@ def predict(output, testing, model, confidence_threshold, nr):
     if nr:
         make_reportV = False
         data.make_report = False
+    
+    if json:
+        jsonV = True
+        data.json = True
 
 
     
     # predict_command.run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV, make_reportV)
-    predict_command.run(testingV, modelV, ctV, outputV, make_reportV)
+    predict_command.run(testingV, modelV, ctV, outputV, make_reportV, jsonV)
     print("test")
     return
 

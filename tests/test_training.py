@@ -33,7 +33,7 @@ def test_train_function():
     
     #testing with number of epocs
     epochs = 1
-    result = training_command.run(epochs, 32, training_set, "", 400, 400, "", -1, data.output_location)
+    result = training_command.run(epochs, 32, training_set, "", 400, 400, "", -1, data.output_location, False)
     assert os.path.exists(data.output_location+"/Model_Version1")
     assert os.path.isdir(data.output_location+"/Model_Version1")
     for i in os.listdir(data.output_location+"/Model_Version1"):
@@ -46,7 +46,7 @@ def test_train_function():
     shutil.rmtree(data.output_location+"/Model_Version1")
     #testing with batch size changed
     batch = 1
-    result =training_command.run(8, batch, training_set, "", 400, 400, "", -1, data.output_location)
+    result =training_command.run(8, batch, training_set, "", 400, 400, "", -1, data.output_location, False)
     assert os.path.exists(data.output_location+"/Model_Version1")
     assert os.path.isdir(data.output_location+"/Model_Version1")
     for i in os.listdir(data.output_location+"/Model_Version1"):
@@ -60,7 +60,7 @@ def test_train_function():
     height = 100
     width = 100
 
-    result =training_command.run(8, 32, training_set, "", height, width, "", -1, data.output_location)
+    result =training_command.run(8, 32, training_set, "", height, width, "", -1, data.output_location, False)
     assert os.path.exists(data.output_location+"/Model_Version1")
     assert os.path.isdir(data.output_location+"/Model_Version1")
     for i in os.listdir(data.output_location+"/Model_Version1"):
@@ -72,7 +72,7 @@ def test_train_function():
     #testing with a confidence threshold
     ct = 0.5
 
-    result = training_command.run(8, 32, training_set, "", 400, 400, "", ct, data.output_location)
+    result = training_command.run(8, 32, training_set, "", 400, 400, "", ct, data.output_location, False)
     assert os.path.exists(data.output_location+"/Model_Version1")
     assert os.path.isdir(data.output_location+"/Model_Version1")
     for i in os.listdir(data.output_location+"/Model_Version1"):
@@ -81,7 +81,7 @@ def test_train_function():
         else:
             assert False
     #testing with an output location 
-    result = training_command.run(8, 32, training_set, "", 400, 400, "", -1, data.output_location)
+    result = training_command.run(8, 32, training_set, "", 400, 400, "", -1, data.output_location, False)
     assert os.path.exists(data.output_location+"/Model_Version1")
     assert os.path.isdir(data.output_location+"/Model_Version1")
     for i in os.listdir(data.output_location+"/Model_Version1"):
@@ -92,7 +92,7 @@ def test_train_function():
 
     #testing with model
     model = data.output_location+"/Model_Version1"
-    result = training_command.run(8, 32, training_set, "", 400, 400, model, -1, data.output_location)
+    result = training_command.run(8, 32, training_set, "", 400, 400, model, -1, data.output_location, False)
     assert os.path.exists(data.output_location+"/Model_Version2")
     assert os.path.isdir(data.output_location+"/Model_Version2")
     for i in os.listdir(data.output_location+"/Model_Version2"):
@@ -201,8 +201,21 @@ def test_train_command():
         else:
             assert False
     assert data.model != None 
-    shutil.rmtree(data.output_location+"/Model_Version1")
     shutil.rmtree(data.output_location+"/Model_Version2")
+
+
+    result = runner.invoke(main, ["train", "-tr", training_set, "-m", model, "-o", data.output_location, "-j", True])
+    assert os.path.exists(data.output_location+"/Model_Version2")
+    assert os.path.isdir(data.output_location+"/Model_Version2")
+    for i in os.listdir(data.output_location+"/Model_Version2"):
+        if i == "assets" or i == "variables" or i == "Confidence and Accuracy Report" or i == "keras_metadata.pb" or i == "saved_model.pb" or i == "train_data.png" or i == "data.json":
+            assert True
+        else:
+            assert False
+    assert os.path.isfile(data.output_location + "/Model_Version2/data.json")
+    assert data.model != None 
+    # shutil.rmtree(data.output_location+"/Model_Version1")
+    # shutil.rmtree(data.output_location+"/Model_Version2")
     pass
 
 
