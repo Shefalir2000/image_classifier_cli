@@ -124,6 +124,7 @@ def test_train_command():
     #testing with number of epocs
     epocs = 1
     #outputLoc = os.getcwd() + "/tests/Here"
+    print(data.output_location)
     result = runner.invoke(main, ["train", "-tr", training_set, "-e", epocs, "-o", data.output_location])
     #print("HIIIIIIII", result.output)
     #print("LOOK HERE PLEASE 2", data.output_location)
