@@ -14,6 +14,8 @@ I suggest reading through the comments of the project and reading about the pack
 When running this program in python make sure that you reinstall the packages after all the changes you make and before each run. If you do not run this command your changes will not be saved. 
 The function call you must use is ```pip install .```
 
+#### Testing
+When testing the predict and train commands you should run the pytest command. This command should be run from the top most directory. In the case of this CLI tool this pytest function should be run from the directory image_classifier_cli.
 
 ### Usage
 
@@ -162,27 +164,16 @@ tf.Tensor([0.18545856 0.21360134 0.14700983 0.3655284  0.08840182], shape=(5,), 
   ```-te, --testing TEXT```             Adds the data that the model will be tested
                                   	on.  [required]
 
-  ```-e, --epochs INTEGER```            Changes the number of epochs that will be
-                                  	done during training.*
-
-  ```-b, --batch INTEGER```             Changes the batch number that will be used
-                                  	during training.*
-
-  ```-h, --height INTEGER```            Changes the height of the images during
-                                  	training.*
 
   ```-ct, --confidence_threshold INTEGER```
-                                  	Changes the height of the images during
-                                  	training.*
-
-  ```-w, --width INTEGER```             Changes the width of the images during
-                                  	training.*
+                                  	     Changes the height of the images during
+                                  	training.
 
   ```-o, --output TEXT```               Changes where the file will be created to
                                   	store analysis about the model creation
-                                  	process.*
+                                  	process.
 
-  ```--nr```				Decide whether the report is generated or
+  ```--nr```				                        Decide whether the report is generated or
                                   	not. If nothing is entered the report will
                                   	be generated.
 
