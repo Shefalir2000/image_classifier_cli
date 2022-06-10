@@ -26,7 +26,7 @@ def change_input():
     #check the different folders in the original input file name
     LOGGER.info("Converting directory into training and validation datasets")
     input_file = data.training_file
-    print(input_file)
+    #print(input_file)
     batch_size = data.batch_size
     image_size = (data.height_pixels, data.width_pixels)
     seedNum = r.randint(1,10000)
@@ -40,6 +40,9 @@ def change_input():
         image_size=image_size,
         batch_size=batch_size,
     )
+    #print(str(len(list(train_ds))) + "LENTGHT")
+    print(str(sum(1 for _ in train_ds)))
+    
     val_ds = tf.keras.preprocessing.image_dataset_from_directory(
         input_file,
         validation_split=0.2,
@@ -125,6 +128,9 @@ def categorize(confidence_threshold, class_names):
     #print("AT", above_threshold)
     above_avg_accuracy, above_avg_confidence = caluclate_average(above_threshold)
     below_avg_accuracy, below_avg_confidence = caluclate_average(below_threshold)
+    data.accuracy_below = below_avg_accuracy
+    data.accuracy_above = above_avg_accuracy
+    data.test_files_num = len(below_threshold) + len(above_threshold)
     if(data.make_report):
         mdFile = MdUtils(file_name=data.model_file + "/Confidence and Accuracy Report",
                          title="Confidence and Accuracy Report")
@@ -146,7 +152,7 @@ def categorize(confidence_threshold, class_names):
         #Check if training file exist in model
         if os.path.exists(data.model_file + "/train_data.png"):
             mdFile.new_header(level = 2, title = "Training Accuracy and Loss for Validation vs Training data")
-            mdFile.new_line(mdFile.new_inline_image(text="train_data.png", path = data.model_file +  "/train_data.png"))
+            mdFile.new_line(mdFile.new_inline_image(text="train_data.png", path = "/train_data.png"))
         else:
             print("data image not found")
         mdFile.new_header(level=2, title="Appendix A")

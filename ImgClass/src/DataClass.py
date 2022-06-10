@@ -29,6 +29,11 @@ class Parameters(metaclass=Singleton):
     model = NotImplemented
     make_report = True
     plot = NotImplemented
+    training_accuracy= NotImplemented
+    training_val_accuracy = NotImplemented
+    test_files_num = NotImplemented
+    accuracy_below = NotImplemented
+    accuracy_above = NotImplemented
 
 
 

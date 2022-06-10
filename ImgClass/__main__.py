@@ -66,7 +66,7 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
     if output:
         print("I am printing output", output)
         if not os.path.isdir(output):
-            raise ValueError("Model is not in a directory.")
+            raise ValueError("Output is not a valid directory.")
         elif not os.path.exists(output):
             raise FileNotFoundError("This path does not exist.")
         outputV = output
@@ -142,7 +142,7 @@ def predict( testing, batch, epochs, model, height, width, confidence_threshold,
         
     if output:
         if not os.path.isdir(output):
-            raise ValueError("Model is not in a directory.")
+            raise ValueError("Output is not a valid directory.")
         elif not os.path.exists(output):
             raise FileNotFoundError("This path does not exist.")
         outputV = output

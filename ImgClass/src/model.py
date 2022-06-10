@@ -78,6 +78,9 @@ def trainModel(train_dataset, validation_dataset):
     acc = history.history['accuracy']
     val_acc = history.history['val_accuracy']
 
+    data.training_accuracy = acc
+    data.training_val_accuracy = val_acc
+
     loss = history.history['loss']
     val_loss = history.history['val_loss']
 

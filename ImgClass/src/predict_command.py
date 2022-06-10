@@ -6,6 +6,8 @@ from ImgClass.src import model as m
 from tensorflow import keras
 import keras.layers
 import shutil
+import json
+from os.path import exists
 
 #initialize all the parameters for this file
 data = DataClass.Parameters()
@@ -75,5 +77,31 @@ def predict(numEpocs, numBatchSize, testingPath, height, width, modelPath, conf_
         # loads the model and categorizes the images
         m.model = keras.models.load_model(modelPath)
         DH.categorize(d.num_confidence, numClasses)
+        make_predict_json()
 
     return
+
+def make_predict_json():
+    if exists(data.model_file + "/data.json"):
+        with open(data.model_file + "/data.json", 'r+') as jason:
+            datas = json.loads(jason.read())
+
+    else:
+        datas = {}
+
+    datas['Predict Parameters'] = []
+    datas['Predict Parameters'].append({
+        "Confidence Threshold": data.num_confidence,
+        "Model File": data.model_file,
+        "Log Output Location": data.output_location
+    })
+    datas['Predict Results'] = []
+    datas['Predict Results'].append({
+        "Number of Testing Files": data.test_files_num,
+        "Below Threshold Accuracy": data.accuracy_below,
+        "Above Threshold Accuracy": data.accuracy_above
+    })
+
+
+    with open(data.model_file + "/data.json", 'w') as jason:
+        json.dump(datas,jason, indent=2)

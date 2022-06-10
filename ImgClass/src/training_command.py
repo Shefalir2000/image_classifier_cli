@@ -6,6 +6,8 @@ from tensorflow import keras
 import shutil
 import keras.layers
 import logging
+import json
+from os.path import exists
 
 
 # initialize all the parameters for this file
@@ -64,6 +66,7 @@ def train(numEpocs, numBatchSize, trainingPath, testingPath, height, width, mode
     if modelPath == "":
         # convert the data and calculate the conf_thresh if not already provided
         training_d, validation = DH.change_input()
+        print(len(training_d) + len(validation))
         if conf_thresh_val == -1:
             conf_thresh_val = 1 / len(training_d.class_names)
         d.num_confidence = conf_thresh_val
@@ -89,6 +92,8 @@ def train(numEpocs, numBatchSize, trainingPath, testingPath, height, width, mode
         
         #create and train a model also calculate the conf_thresh
         training_d, validation = DH.change_input()
+        print(len(training_d) + len(validation))
+
         if conf_thresh_val == -1:
             conf_thresh_val = 1 / len(training_d.class_names)
         d.num_confidence = conf_thresh_val
@@ -97,12 +102,65 @@ def train(numEpocs, numBatchSize, trainingPath, testingPath, height, width, mode
         data.model = keras.models.load_model(modelPath)
         data.model.summary()
         m.trainModel(training_d, validation)
-
     # save the output in the correct location
     if output_loc == "Output":
         data.model.save(os.getcwd() + "/Output/" + model_name)
+        make_training_json(model_name)
         data.plot.savefig(os.getcwd() + "/Output/" + model_name +"/train_data.png")
     else:
         data.model.save(output_loc + "/" + model_name)
+        make_training_json(model_name)
         data.plot.savefig(output_loc + "/" + model_name +"/train_data.png")
     return
+
+def make_training_json(model_name):
+
+    if exists(data.output_location + "/" + model_name + "/data.json"):
+        with open (data.output_location + "/" + model_name + "/data.json", 'r+') as jason:
+            arr = json.loads(jason.read())
+    else:
+        arr = {}
+
+    with open(data.output_location + "/" + model_name + "/data.json", 'w') as jason:
+        num_file = count_files(data.training_file, 0) 
+        val_files= int(num_file * .2)
+        train_files = num_file - val_files
+        arr['Train Parameters'] = []
+        arr['Train Parameters'].append({"Epoch Number": data.num_epochs,
+        "Batch Size": data.batch_size,
+         "Height Pixels": data.height_pixels,
+         "Width Pixels" : data.width_pixels,
+         "Training File": data.training_file,
+         "Number of Training Files": train_files,
+         "Number of Validation Files": val_files
+          })
+
+
+  
+        if data.model_file != "":
+            arr["Train Parameters"][0]["Inital Model"] = data.model_file
+        
+        arr['Train Results'] = []
+        arr['Train Results'].append({})
+
+        dir_path = data.training_file
+        count = 0
+
+
+        for i in range(data.num_epochs):
+            arr["Train Results"][0]["epoch " + str(i + 1)] = "validation accuracy " + str(data.training_val_accuracy[i])  + " training accuracy " + str(data.training_accuracy[i])
+
+        json.dump(arr, jason, indent=2)
+
+def count_files(data_path, count):
+    for path in os.listdir(data_path):
+        if os.path.isdir( data_path + '/' +path):
+            count = count_files(data_path + '/' + path, count)
+        elif not "jpeg" in path and not "jpg" in path and not "jfif" in path and not "pjpeg" in path and not "pjp" in path and not "png" in path and not "svg" in path and not "webp" in path:
+            return count 
+        elif os.path.isfile(data_path + '/' + path):
+            count = count + 1
+    return count 
+
+
+
