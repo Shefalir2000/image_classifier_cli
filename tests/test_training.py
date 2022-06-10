@@ -16,15 +16,16 @@ import os
 data = DataClass.Parameters()
 
 def test_train_function():
-    print("function train test")
-    training_set = "C:/Users/sranjan31/Source/clitoolpleasework/image_classifier_cli/tests/training_set"
-    print("command train test")
-    print(os.getcwd())
+    # print("function train test")
+    # training_set = "C:/Users/sranjan31/Source/clitoolpleasework/image_classifier_cli/tests/training_set"
+    # print("command train test")
+    # print(os.getcwd())
 
-    name = "output_testing"
+    runner = CliRunner()
+    name = "output_trainingF"
     training_set = "./testing_data/training_set"
     data.output_location = "./tests/"+ name
-
+    
     try:
         os.makedirs(data.output_location)
     except:
@@ -34,69 +35,69 @@ def test_train_function():
     #testing with number of epocs
     epochs = 1
     result = training_command.run(epochs, 32, training_set, "", 400, 400, "", -1, data.output_location)
-    assert os.path.exists(os.getcwd() + "/Output/Model_Version1")
-    assert os.path.isdir(os.getcwd() + "/Output/Model_Version1")
-    for i in os.listdir(os.getcwd() + "/Output/Model_Version1"):
+    assert os.path.exists(data.output_location+"/Model_Version1")
+    assert os.path.isdir(data.output_location+"/Model_Version1")
+    for i in os.listdir(data.output_location+"/Model_Version1"):
         print(i)
         if i == "assets" or i == "variables" or i == "Confidence and Accuracy Report" or i == "keras_metadata.pb" or i == "saved_model.pb" or i == "train_data.png":
             assert True
         else:
             assert False
             
-    shutil.rmtree(os.getcwd() + "/Output/Model_Version1")
+    shutil.rmtree(data.output_location+"/Model_Version1")
     #testing with batch size changed
     batch = 1
     result =training_command.run(8, batch, training_set, "", 400, 400, "", -1, data.output_location)
-    assert os.path.exists(os.getcwd() + "/Output/Model_Version1")
-    assert os.path.isdir(os.getcwd() + "/Output/Model_Version1")
-    for i in os.listdir(os.getcwd() + "/Output/Model_Version1"):
+    assert os.path.exists(data.output_location+"/Model_Version1")
+    assert os.path.isdir(data.output_location+"/Model_Version1")
+    for i in os.listdir(data.output_location+"/Model_Version1"):
         if i == "assets" or i == "variables" or i == "Confidence and Accuracy Report" or i == "keras_metadata.pb" or i == "saved_model.pb" or i == "train_data.png":
             assert True
         else:
             assert False
     
-    shutil.rmtree(os.getcwd() + "/Output/Model_Version1")
+    shutil.rmtree(data.output_location+"/Model_Version1")
     #testing with height and width
     height = 100
     width = 100
 
     result =training_command.run(8, 32, training_set, "", height, width, "", -1, data.output_location)
-    assert os.path.exists(os.getcwd() + "/Output/Model_Version1")
-    assert os.path.isdir(os.getcwd() + "/Output/Model_Version1")
-    for i in os.listdir(os.getcwd() + "/Output/Model_Version1"):
+    assert os.path.exists(data.output_location+"/Model_Version1")
+    assert os.path.isdir(data.output_location+"/Model_Version1")
+    for i in os.listdir(data.output_location+"/Model_Version1"):
         if i == "assets" or i == "variables" or i == "Confidence and Accuracy Report" or i == "keras_metadata.pb" or i == "saved_model.pb" or i == "train_data.png":
             assert True
         else:
             assert False
-    shutil.rmtree(os.getcwd() + "/Output/Model_Version1")
+    shutil.rmtree(data.output_location+"/Model_Version1")
     #testing with a confidence threshold
     ct = 0.5
 
     result = training_command.run(8, 32, training_set, "", 400, 400, "", ct, data.output_location)
-    assert os.path.exists(os.getcwd() + "/Output/Model_Version1")
-    assert os.path.isdir(os.getcwd() + "/Output/Model_Version1")
-    for i in os.listdir(os.getcwd() + "/Output/Model_Version1"):
+    assert os.path.exists(data.output_location+"/Model_Version1")
+    assert os.path.isdir(data.output_location+"/Model_Version1")
+    for i in os.listdir(data.output_location+"/Model_Version1"):
         if i == "assets" or i == "variables" or i == "Confidence and Accuracy Report" or i == "keras_metadata.pb" or i == "saved_model.pb" or i == "train_data.png":
             assert True
         else:
             assert False
     #testing with an output location 
     result = training_command.run(8, 32, training_set, "", 400, 400, "", -1, data.output_location)
-    print(outputLoc+"/Model_Version1")
-    assert os.path.exists(outputLoc+"/Model_Version1")
-    assert os.path.isdir(outputLoc+"/Model_Version1")
-    for i in os.listdir(outputLoc+"/Model_Version1"):
+    #print(outputLoc+"/Model_Version1")
+    assert os.path.exists(data.output_location+"/Model_Version1")
+    assert os.path.isdir(data.output_location+"/Model_Version1")
+    for i in os.listdir(data.output_location+"/Model_Version1"):
         if i == "assets" or i == "variables" or i == "Confidence and Accuracy Report" or i == "keras_metadata.pb" or i == "saved_model.pb" or i == "train_data.png":
             assert True
         else:
             assert False
 
     #testing with model
-    model = os.getcwd() + data.output_location + "/Model_Version1"
+    model = data.output_location + "/Model_Version1"
     result = training_command.run(8, 32, training_set, "", 400, 400, model, -1, data.output_location)
-    assert os.path.exists(os.getcwd() + "/Output/Model_Version2")
-    assert os.path.isdir(os.getcwd() + "/Output/Model_Version2")
-    for i in os.listdir(os.getcwd() + "/Output/Model_Version2"):
+    assert os.path.exists(data.output_location+"/Model_Version2")
+    assert os.path.isdir(data.output_location+"/Model_Version2")
+    for i in os.listdir(data.output_location+"/Model_Version2"):
         if i == "assets" or i == "variables" or i == "Confidence and Accuracy Report" or i == "keras_metadata.pb" or i == "saved_model.pb" or i == "train_data.png":
             assert True
         else:
@@ -112,10 +113,10 @@ def test_train_command():
     # print("command train test")
     # print(os.getcwd())
     runner = CliRunner()
-    name = "output_testing"
+    name = "output_trainingC"
     training_set = "./testing_data/training_set"
     data.output_location = "./tests/"+ name
-    #print(os.getcwd())
+
     try:
         os.makedirs(data.output_location)
     except:
