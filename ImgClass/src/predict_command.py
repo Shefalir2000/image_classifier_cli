@@ -20,7 +20,8 @@ except:
 # the run function for the predict command
 # this function is useful if you want to add 
 # any additional twists to this command
-def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV, make_reportV):
+# def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV, make_reportV):
+def run(testingV, modelV, ctV, outputV, make_reportV):
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
     logging.basicConfig(
@@ -30,27 +31,22 @@ def run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outp
         level=logging.INFO
     )
     LOGGER = logging.getLogger()
-    predict(epochsV, batchV, testingV, heightV, widthV, modelV, ctV, outputV, make_reportV)
+    predict(testingV, modelV, ctV, outputV, make_reportV)
     LOGGER.info('Master runs')
 
     return
 
 # function that organizes all the predict parameters and 
 # makes the initial call for predict
-def predict(numEpocs, numBatchSize, testingPath, height, width, modelPath, conf_thresh_val, output_loc, make_reportV):
+def predict( testingPath, modelPath, conf_thresh_val, outputV, make_reportV):
     """print("testing in runfile.")
     if output_loc == "Output":
         print("Bleh")"""
     
     # set the data here
     d = DataClass.Parameters()
-    d.num_epochs = numEpocs
-    d.batch_size = numBatchSize
-    d.height_pixels = height
-    d.width_pixels = width
     d.test_file = testingPath
     d.model_file = modelPath
-    d.output_location = output_loc
     d.model = keras.models.load_model(d.model_file)
     d.make_report = make_reportV
 

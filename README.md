@@ -1,5 +1,8 @@
 # Image Classifier: A simple tool to create and test models
 
+## Requirements
+Requires Python version >= 3.10 to run setup.py
+
 ## Summary
 ImgClass is a simple CLI tool that meant to help get users started with creating and messing around with ML models. It showcases the use of Click and logging for tool development through multiple files. It also includes everything needed to deliver and install a pypi compatable project. This tool also includes the basic infrastructure needed to produce a product that can classify images, when given a training data set. Below you will find the details of how to install and use the tool to its full capability. 
 I suggest reading through the comments of the project and reading about the packages used throughout the project fpr a better understanding of how packeges were used throughout the tool. 
@@ -9,8 +12,10 @@ I suggest reading through the comments of the project and reading about the pack
 #### Python
 
 When running this program in python make sure that you reinstall the packages after all the changes you make and before each run. If you do not run this command your changes will not be saved. 
-The function call you must use is ```pip install .```
+The function call you must use is ```python setup.py install```
 
+#### Testing
+When testing the predict and train commands you should run the ```pytest``` command. This command should be run from the top most directory. In the case of this CLI tool this ```pytest``` should be run from the directory image_classifier_cli.
 
 ### Usage
 
@@ -159,33 +164,35 @@ tf.Tensor([0.18545856 0.21360134 0.14700983 0.3655284  0.08840182], shape=(5,), 
   ```-te, --testing TEXT```             Adds the data that the model will be tested
                                   	on.  [required]
 
-  ```-e, --epochs INTEGER```            Changes the number of epochs that will be
-                                  	done during training.*
-
-  ```-b, --batch INTEGER```             Changes the batch number that will be used
-                                  	during training.*
-
-  ```-h, --height INTEGER```            Changes the height of the images during
-                                  	training.*
 
   ```-ct, --confidence_threshold INTEGER```
-                                  	Changes the height of the images during
-                                  	training.*
-
-  ```-w, --width INTEGER```             Changes the width of the images during
-                                  	training.*
+                                  	     Changes the weight of the images during
+                                  	training.
 
   ```-o, --output TEXT```               Changes where the file will be created to
                                   	store analysis about the model creation
-                                  	process.*
+                                  	process.
 
-  ```--nr```				Decide whether the report is generated or
+  ```--nr```				                        Decide whether the report is generated or
                                   	not. If nothing is entered the report will
                                   	be generated.
 
   ```--help```                          Show this message and exit.
 
 
+## Common Errors:
+#### Installing packages is not working
+If you are running into an error where ```python setup.py install``` is not working another way to try and install the packages that you should try is ```pip install .```
+
+If the solution above is also not working you should use the command ```python --version``` or ```python3 --version``` to check the version of python and make sure the python version is above 3.10.
+
+#### In IceHammer the GPU is not working
+If you are running IceHammer and the GPUs are not working which is causing training and predicting to be slow or showing this warning:
+```W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH:```, here is what you should do.
+
+Try running this command ```nvidia-smi```. If this causes an error then your GPUs are not working and you should try these two commands:
+```conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0```
+```export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/```
 
 
 
