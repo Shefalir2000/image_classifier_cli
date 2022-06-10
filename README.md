@@ -1,5 +1,8 @@
 # Image Classifier: A simple tool to create and test models
 
+## Requirements
+Requires Python version >= 3.10 to run setup.py
+
 ## Summary
 ImgClass is a simple CLI tool that meant to help get users started with creating and messing around with ML models. It showcases the use of Click and logging for tool development through multiple files. It also includes everything needed to deliver and install a pypi compatable project. This tool also includes the basic infrastructure needed to produce a product that can classify images, when given a training data set. Below you will find the details of how to install and use the tool to its full capability. 
 I suggest reading through the comments of the project and reading about the packages used throughout the project fpr a better understanding of how packeges were used throughout the tool. 
