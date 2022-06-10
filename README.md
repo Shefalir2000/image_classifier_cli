@@ -1,6 +1,6 @@
 # Image Classifier: A simple tool to create and test models
 
-##Requirements
+## Requirements
 Requires Python version >= 3.10 to run setup.py
 
 ## Summary
