@@ -15,7 +15,7 @@ When running this program in python make sure that you reinstall the packages af
 The function call you must use is ```pip install .```
 
 #### Testing
-When testing the predict and train commands you should run the pytest command. This command should be run from the top most directory. In the case of this CLI tool this pytest function should be run from the directory image_classifier_cli.
+When testing the predict and train commands you should run the ```pytest``` command. This command should be run from the top most directory. In the case of this CLI tool this ```pytest``` should be run from the directory image_classifier_cli.
 
 ### Usage
 
