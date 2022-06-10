@@ -46,13 +46,13 @@ def test_predict_function():
 
     #testing with number of epocs
     epocs = 1
-    predict_command.run(epocs, 32, "", testing_set, 400, 400, model, -1, data.output_location, True)
+    predict_command.run(testing_set, model, -1, data.output_location, True)
     assert os.path.isfile(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
     os.remove(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
 
     # predict using the number of batches
     batch = 1
-    predict_command.run(8, batch, "", testing_set, 400, 400, model, -1, data.output_location , True)
+    predict_command.run(testing_set, model, -1, data.output_location , True)
     print(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
     #assert os.path.exists(os.getcwd()+"/Output/Model_Version1/Confidence and Accuracy Report.md")
     assert os.path.isfile(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
@@ -61,13 +61,13 @@ def test_predict_function():
 
     #predict using confidence_threshold
     ct = 0.5
-    predict_command.run(8, 32, training_set, testing_set, 400, 400, model, ct, data.output_location , True)
+    predict_command.run(testing_set, model, ct, data.output_location , True)
     #assert os.path.exists(os.getcwd()+"/Output/Model_Version1/Confidence and Accuracy Report.md")
     assert os.path.isfile(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
     os.remove(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
 
     # predict using the an output folder
-    predict_command.run(8, 32, training_set, testing_set, 400, 400, data.output_location + "/Model_Version1", -1, data.output_location , True)
+    predict_command.run(testing_set, data.output_location + "/Model_Version1", -1, data.output_location , True)
     
 
     #assert os.path.exists(outputLoc+"/Output/Model_Version1/Confidence and Accuracy Report.md")
@@ -75,7 +75,7 @@ def test_predict_function():
     os.remove(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
 
     # predict using the the no report flag
-    predict_command.run(8, 32, training_set, testing_set, 400, 400, model, -1, data.output_location , False)
+    predict_command.run(testing_set, model, -1, data.output_location , False)
     assert not os.path.isfile(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
     pass
     
@@ -106,14 +106,14 @@ def test_predict_command():
     #testing with number of epocs
     epocs = 1
     # predict_command.run(epocs, 32, "", testing_set, 400, 400, model, -1, data.output_location, True)
-    runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-o", data.output_location, "-e", epocs])
+    runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-o", data.output_location])
     assert os.path.isfile(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
     os.remove(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
 
     # predict using the number of batches
     batch = 1
     # predict_command.run(8, batch, "", testing_set, 400, 400, model, -1, data.output_location , True)
-    runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-o", data.output_location, "-b", batch])
+    runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-o", data.output_location])
     print(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
     #assert os.path.exists(os.getcwd()+"/Output/Model_Version1/Confidence and Accuracy Report.md")
     assert os.path.isfile(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
@@ -122,21 +122,21 @@ def test_predict_command():
 
     #predict using confidence_threshold
     ct = 0.5
-    predict_command.run(8, 32, training_set, testing_set, 400, 400, model, ct, data.output_location , True)
-    runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-o", data.output_location, "-ct", ct])
+    #predict_command.run(8, 32, training_set, testing_set, 400, 400, model, ct, data.output_location , True)
+    runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-ct", ct, "-o", data.output_location])
     #assert os.path.exists(os.getcwd()+"/Output/Model_Version1/Confidence and Accuracy Report.md")
     assert os.path.isfile(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
     os.remove(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
 
     # predict using the an output folder
-    predict_command.run(8, 32, training_set, testing_set, 400, 400, data.output_location + "/Model_Version1", -1, data.output_location , True)
+    #predict_command.run(8, 32, training_set, testing_set, 400, 400, data.output_location + "/Model_Version1", -1, data.output_location , True)
     runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-o", data.output_location])
     #assert os.path.exists(outputLoc+"/Output/Model_Version1/Confidence and Accuracy Report.md")
     assert os.path.isfile(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
     os.remove(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
 
     # predict using the the no report flag
-    predict_command.run(8, 32, training_set, testing_set, 400, 400, model, -1, data.output_location , False)
+    #predict_command.run(8, 32, training_set, testing_set, 400, 400, model, -1, data.output_location , False)
     runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-o", data.output_location, "--nr"])
     assert not os.path.isfile(data.output_location + "/Model_Version1/Confidence and Accuracy Report.md")
     pass
