@@ -50,7 +50,7 @@ def test_predict_function():
     batch = 1
     predict_command.run(8, batch, "", testing_set, 400, 400, model, -1, data.output_location, True)
     #print(os.getcwd()+"/Output/Model_Version1/Confidence and Accuracy Report.md")
-    #assert os.path.exists(os.getcwd()+"/Output/Model_Version1/Confidence and Accuracy Report.md")
+    assert os.path.exists(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
     assert os.path.isfile(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
     os.remove(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
 
@@ -68,16 +68,66 @@ def test_predict_function():
     assert os.path.isfile(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
     os.remove(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
 
-    #assert os.path.exists(outputLoc+"/Output/Model_Version1/Confidence and Accuracy Report.md")
-    assert os.path.isfile(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
-    os.remove(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
     # predict using the the no report flag
     predict_command.run(8, 32, training_set, testing_set, 400, 400, model, -1, data.output_location, False)
 
     pass
 
+def test_predict_command():
+    # print("command predict test")
+    # training_set = "C:/Users/sranjan31/Source/clitoolpleasework/image_classifier_cli/tests/training_set"
+    # testing_set = "C:/Users/sranjan31/Source/clitoolpleasework/image_classifier_cli/tests/testing_set/CatsDogs"
+    # print(os.getcwd())
+    
+    runner = CliRunner()
+    name = "output_testingC"
+    training_set = "./testing_data/training_set"
+    testing_set = "./testing_data/testing_set"
+    data.output_location = "./tests/"+ name
+
+    try:
+        os.makedirs(data.output_location)
+    except:
+        shutil.rmtree(data.output_location)
+        os.makedirs(data.output_location)
+    result = runner.invoke(main, ["train", "-tr", training_set, "-o", data.output_location])
+    model = data.output_location + "/Model_Version1"
+
+    #testing with number of epocs
+    epocs = 1
+    result = runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-e", epocs, "-o", data.output_location])
+    assert os.path.isfile(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
+    os.remove(data.output_location +"/Model_Version1/Confidence and Accuracy Report.md")
+
+    # predict using the number of batches
+    batch = 1
+    result = runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-b", batch, "-o", data.output_location])
+    #print(os.getcwd()+"/Output/Model_Version1/Confidence and Accuracy Report.md")
+    assert os.path.exists(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
+    assert os.path.isfile(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
+    os.remove(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
+
+
+    #predict using confidence_threshold
+    ct = 0.5
+    result = runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-ct", ct, "-o", data.output_location])
+    assert os.path.exists(data.output_location+ "/Model_Version1/Confidence and Accuracy Report.md")
+    assert os.path.isfile(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
+    os.remove(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
+
+    # predict using the an output folder
+    result = runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-o", data.output_location])
+    assert os.path.exists(data.output_location+ "/Model_Version1/Confidence and Accuracy Report.md")
+    assert os.path.isfile(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
+    os.remove(data.output_location+"/Model_Version1/Confidence and Accuracy Report.md")
+
+    # predict using the the no report flag
+    result = runner.invoke(main, ["predict", "-te", testing_set, "-m", model, "-e", epocs, "-o", data.output_location, "--nr", False])
+
+    pass
     
 if __name__ == "__main__":
     test_predict_function()
+    test_predict_command()
 
 
