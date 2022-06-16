@@ -102,11 +102,16 @@ def make_predict_json():
         "Log Output Location": data.output_location
     })
     datas['Predict Results'] = []
-    datas['Predict Results'].append({
-        "Number of Testing Files": data.test_files_num,
-        "Below Threshold Accuracy": data.accuracy_below,
-        "Above Threshold Accuracy": data.accuracy_above
-    })
+    if not data.unlabeled:
+        datas['Predict Results'].append({
+            "Number of Testing Files": data.test_files_num,
+            "Below Threshold Accuracy": data.accuracy_below,
+            "Above Threshold Accuracy": data.accuracy_above
+        })
+    else:
+        datas["Predict Results"].append({
+            "Number of Testing Files": data.test_files_num,          
+        })
 
 
     with open(data.model_file + "/data.json", 'w') as jason:
