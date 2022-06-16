@@ -1,16 +1,42 @@
 import shutil
 
+import tensorflow as tf
+import PIL
+import pathlib
+from matplotlib import pyplot as plt
+from PIL import Image
+import numpy as np
+import cv2 as cv
 import os
+from keras.layers import MaxPooling2D
+from tensorflow import keras
+from keras import models
+import keras.layers
+from keras.layers import Rescaling
+
+model = tf.keras.models.Sequential()
+model.add(tf.keras.layers.Input(shape = (400, 400, 3)))
+model.add(tf.keras.layers.Rescaling(1./255))
+model.add(tf.keras.layers.Conv2D(16, 3, padding = 'same', activation = 'relu'))
+model.add(MaxPooling2D())
+model.add(tf.keras.layers.Conv2D(32, 3, padding = 'same' , activation='relu'))
+model.add(MaxPooling2D())
+model.add(tf.keras.layers.Conv2D(64, 3, padding = 'same' , activation='relu'))
+model.add(MaxPooling2D())
+model.add(tf.keras.layers.Conv2D(128, 3, padding = 'same' , activation='relu'))
+model.add(MaxPooling2D())
+model.add(tf.keras.layers.Flatten())
+model.add(tf.keras.layers.Dropout(0.2))
+model.add(tf.keras.layers.Dense(units=64, activation='relu'))
+model.add(tf.keras.layers.Dropout(0.2))
+model.add(tf.keras.layers.Dense(units=64, activation='relu'))
+model.add(tf.keras.layers.Dense(units = 112321))
 
 
-def count_files(data_path, count):
-    for path in os.listdir(data_path):
-        if os.path.isdir( data_path + '/' +path):
-            count = count_files(data_path + '/' + path, count)
-        elif not "jpeg" in path and not "jpg" in path and not "jfif" in path and not "pjpeg" in path and not "pjp" in path and not "png" in path and not "svg" in path and not "webp" in path:
-            return count 
-        elif os.path.isfile(data_path + '/' + path):
-            count = count + 1
-    return count 
+model.compile(optimizer = 'adam',
+                loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits = True),
+                metrics = ['accuracy'])
 
-print(count_files("testing_data/training_set", 0))
+model.summary()
+
+print(model.layers[-1].output.get_shape()[1])
