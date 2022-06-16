@@ -1,0 +1,52 @@
+[06/10/2022 03:27:10 PM] INFO: Converting directory into training and validation datasets
+[06/10/2022 03:27:10 PM] INFO: Generating model
+[06/10/2022 03:27:10 PM] INFO: Generating model
+[06/10/2022 03:27:10 PM] INFO: Training model
+[06/10/2022 03:27:14 PM] INFO: Finished Training
+[06/10/2022 03:27:14 PM] INFO: Plotting accuracy and loss of training and validation data
+[06/10/2022 03:27:15 PM] WARNING: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 2 of 2). These functions will not be directly callable after loading.
+[06/10/2022 03:27:16 PM] INFO: Assets written to: ./tests/output_testingF/Model_Version1/assets
+[06/10/2022 03:27:16 PM] INFO: Master runs
+[06/10/2022 03:27:16 PM] INFO: Converting directory into training and validation datasets
+[06/10/2022 03:27:16 PM] INFO: Generating model
+[06/10/2022 03:27:16 PM] INFO: Generating model
+[06/10/2022 03:27:16 PM] INFO: Training model
+[06/10/2022 03:28:11 PM] INFO: Finished Training
+[06/10/2022 03:28:11 PM] INFO: Plotting accuracy and loss of training and validation data
+[06/10/2022 03:28:11 PM] WARNING: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 2 of 2). These functions will not be directly callable after loading.
+[06/10/2022 03:28:12 PM] INFO: Assets written to: ./tests/output_testingF/Model_Version1/assets
+[06/10/2022 03:28:12 PM] INFO: Master runs
+[06/10/2022 03:28:12 PM] INFO: Converting directory into training and validation datasets
+[06/10/2022 03:28:12 PM] INFO: Generating model
+[06/10/2022 03:28:12 PM] INFO: Generating model
+[06/10/2022 03:28:12 PM] INFO: Training model
+[06/10/2022 03:28:14 PM] INFO: Finished Training
+[06/10/2022 03:28:14 PM] INFO: Plotting accuracy and loss of training and validation data
+[06/10/2022 03:28:15 PM] WARNING: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 2 of 2). These functions will not be directly callable after loading.
+[06/10/2022 03:28:15 PM] INFO: Assets written to: ./tests/output_testingF/Model_Version1/assets
+[06/10/2022 03:28:15 PM] INFO: Master runs
+[06/10/2022 03:28:15 PM] INFO: Converting directory into training and validation datasets
+[06/10/2022 03:28:15 PM] INFO: Generating model
+[06/10/2022 03:28:15 PM] INFO: Generating model
+[06/10/2022 03:28:15 PM] INFO: Training model
+[06/10/2022 03:28:38 PM] INFO: Finished Training
+[06/10/2022 03:28:38 PM] INFO: Plotting accuracy and loss of training and validation data
+[06/10/2022 03:28:38 PM] WARNING: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 2 of 2). These functions will not be directly callable after loading.
+[06/10/2022 03:28:39 PM] INFO: Assets written to: ./tests/output_testingF/Model_Version1/assets
+[06/10/2022 03:28:39 PM] INFO: Master runs
+[06/10/2022 03:28:39 PM] INFO: Converting directory into training and validation datasets
+[06/10/2022 03:28:39 PM] INFO: Generating model
+[06/10/2022 03:28:39 PM] INFO: Generating model
+[06/10/2022 03:28:39 PM] INFO: Training model
+[06/10/2022 03:29:01 PM] INFO: Finished Training
+[06/10/2022 03:29:01 PM] INFO: Plotting accuracy and loss of training and validation data
+[06/10/2022 03:29:02 PM] WARNING: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 2 of 2). These functions will not be directly callable after loading.
+[06/10/2022 03:29:02 PM] INFO: Assets written to: ./tests/output_testingF/Model_Version1/assets
+[06/10/2022 03:29:03 PM] INFO: Master runs
+[06/10/2022 03:29:03 PM] INFO: Converting directory into training and validation datasets
+[06/10/2022 03:29:03 PM] INFO: Training model
+[06/10/2022 03:29:26 PM] INFO: Finished Training
+[06/10/2022 03:29:26 PM] INFO: Plotting accuracy and loss of training and validation data
+[06/10/2022 03:29:26 PM] WARNING: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 2 of 2). These functions will not be directly callable after loading.
+[06/10/2022 03:29:26 PM] INFO: Assets written to: ./tests/output_testingF/Model_Version2/assets
+[06/10/2022 03:29:27 PM] INFO: Master runs

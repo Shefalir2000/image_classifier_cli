@@ -11,3 +11,4 @@ numpy
 mdutils
 pytest
 tensorflow-datasets
+pathlib
