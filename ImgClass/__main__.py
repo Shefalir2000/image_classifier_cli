@@ -102,20 +102,17 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
 @main.command()
 @click.option( "--model", "-m", type=click.STRING, required=True, help="If a model exists then use the model that will be tested.")
 @click.option("--testing","-te",type=click.STRING, required=True, help = "Adds the data that the model will be tested on.")
-# @click.option("--epochs","-e",type=int,help = "Changes the number of epochs that will be done during training.")
-# @click.option("--batch","-b",type=int,help = "Changes the batch number that will be used during training.")
-# @click.option("--height","-h",type=int,help = "Changes the height of the images during training.")
 @click.option("--confidence_threshold","-ct",type=int,help = "Changes the weight of the images during training.")
-# @click.option("--width","-w",type=int,help = "Changes the width of the images during training.")
 @click.option("--output","-o",type=click.STRING,required=True,help="Changes where the file will be created to store analysis about the model creation process.")
 @click.option("--nr", is_flag = True, help="Decide whether the report is generated or not. If nothing is entered the report will be generated.")
 @click.option("--json", "-j", is_flag = False, help = "If this flag is present, a JSON file is generated")
 @click.option("--unlabeled", "-ul", is_flag = True, help="Tells if the testing data has labels or not.")
-@click.option( "--nameClasses", "-nc", type=click.STRING, required=True, help="The full path for the files that holds all the labels.")
+@click.option("--nameclass", "-nc", type=click.STRING, help="sedfgh")
 
 # def predict( testing, batch, epochs, model, height, width, confidence_threshold, output, nr):
-def predict(output, testing, model, confidence_threshold, nr, json, unlabeled, nameClasses):
+def predict(model, testing, confidence_threshold, output, nameclass, nr, json, unlabeled):
     """Runs Classification Prediction using provided model."""
+    nameClasses = nameclass
     jsonV = False
     modelV = ""
     testingV = ""
@@ -124,22 +121,11 @@ def predict(output, testing, model, confidence_threshold, nr, json, unlabeled, n
     outputV = ""
     unlabeledV = False
     print("Testing", testing)
-
-    # if epochs:
-    #     epochsV = epochs
-    #     data.num_epochs = epochs
         
     if confidence_threshold:
         ctV = confidence_threshold
         data.num_confidence = confidence_threshold
         
-    # if batch:
-    #     batchV = batch
-    #     data.batch_size = batch
-        
-    # if height:
-    #     heightV = height
-    #     data.height_pixels = height
         
     if unlabeled:
         unlabeledV = True

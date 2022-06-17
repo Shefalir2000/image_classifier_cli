@@ -34,6 +34,8 @@ class Parameters(metaclass=Singleton):
     accuracy_below = NotImplemented
     accuracy_above = NotImplemented
     json = False
+    unlabeled = False
+    name_classes: str = ""
 
 
 

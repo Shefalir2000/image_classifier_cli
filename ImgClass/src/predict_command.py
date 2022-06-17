@@ -37,7 +37,7 @@ def run(testingV, modelV, ctV, outputV, make_reportV, jsonV, UnlabeledV):
     data.json = jsonV
     LOGGER = logging.getLogger()
     if not UnlabeledV:
-        predict(testingV, modelV, ctV, outputV, make_reportV)
+        predictTest(testingV, modelV, ctV, outputV, make_reportV)
     else:
         predict_no_labels(testingV, modelV, ctV, make_reportV)
     LOGGER.info('Master runs')
@@ -46,7 +46,7 @@ def run(testingV, modelV, ctV, outputV, make_reportV, jsonV, UnlabeledV):
 
 # function that organizes all the predict parameters and 
 # makes the initial call for predict
-def predict( testingPath, modelPath, conf_thresh_val, outputV, make_reportV):
+def predictTest(testingPath, modelPath, conf_thresh_val, outputV, make_reportV):
     """print("testing in runfile.")
     if output_loc == "Output":
         print("Bleh")"""
@@ -141,7 +141,7 @@ def predict_no_labels(testingPath, modelPath, conf_thresh_val, make_reportV):
         if(conf_thresh_val == -1):
             conf_thresh_val = 100 / len(nameClasses)
         d.num_confidence = conf_thresh_val
-        DH.categorizeUL(d.num_confidence/100, len(nameClasses))
+        DH.categorizeUL(d.num_confidence/100, nameClasses)
         # numClasses = list()
         # #checks makes the list of all the labels
         # for i in os.listdir(testingPath):

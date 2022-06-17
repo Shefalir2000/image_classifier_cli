@@ -44,6 +44,7 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
     ctV = -1
     outputV = "Output"
     saveV = ""
+    
 
     if epochs:
         epochsV = epochs
@@ -101,46 +102,34 @@ def train(training, batch, epochs, model, height, width, confidence_threshold, o
 @main.command()
 @click.option( "--model", "-m", type=click.STRING, required=True, help="If a model exists then use the model that will be tested.")
 @click.option("--testing","-te",type=click.STRING, required=True, help = "Adds the data that the model will be tested on.")
-# @click.option("--epochs","-e",type=int,help = "Changes the number of epochs that will be done during training.")
-# @click.option("--batch","-b",type=int,help = "Changes the batch number that will be used during training.")
-# @click.option("--height","-h",type=int,help = "Changes the height of the images during training.")
 @click.option("--confidence_threshold","-ct",type=int,help = "Changes the weight of the images during training.")
-# @click.option("--width","-w",type=int,help = "Changes the width of the images during training.")
 @click.option("--output","-o",type=click.STRING,required=True,help="Changes where the file will be created to store analysis about the model creation process.")
 @click.option("--nr", is_flag = True, help="Decide whether the report is generated or not. If nothing is entered the report will be generated.")
 @click.option("--json", "-j", is_flag = False, help = "If this flag is present, a JSON file is generated")
+@click.option("--unlabeled", "-ul", is_flag = True, help="Tells if the testing data has labels or not.")
+@click.option("--nameclass", "-nc", type=click.STRING, help="sedfgh")
 
 # def predict( testing, batch, epochs, model, height, width, confidence_threshold, output, nr):
-def predict(output, testing, model, confidence_threshold, nr, json):
+def predict(model, testing, confidence_threshold, output, nameclass, nr, json, unlabeled):
     """Runs Classification Prediction using provided model."""
+    nameClasses = nameclass
     jsonV = False
     modelV = ""
     testingV = ""
     ctV = -1
     make_reportV = True
     outputV = ""
-
+    unlabeledV = False
     print("Testing", testing)
-
-    # if epochs:
-    #     epochsV = epochs
-    #     data.num_epochs = epochs
         
     if confidence_threshold:
         ctV = confidence_threshold
         data.num_confidence = confidence_threshold
         
-    # if batch:
-    #     batchV = batch
-    #     data.batch_size = batch
         
-    # if height:
-    #     heightV = height
-    #     data.height_pixels = height
-        
-    # if width:
-    #     widthV = width
-    #     data.width_pixels = width
+    if unlabeled:
+        unlabeledV = True
+        data.unlabeled = True
         
     if output:
         if not os.path.isdir(output):
@@ -174,11 +163,18 @@ def predict(output, testing, model, confidence_threshold, nr, json):
     if json:
         jsonV = True
         data.json = True
+    if nameClasses:
+        if not os.path.isfile(nameClasses):
+            raise ValueError("Model is not in a directory.")
+        elif not os.path.exists(nameClasses):
+            raise FileNotFoundError("This path does not exist.")
+        data.name_classes = nameClasses
 
-
+    if unlabeled and not nameClasses:
+        raise FileNotFoundError("Classes file must be present if you are using unlabeled data.")
     
     # predict_command.run(epochsV, batchV, trainingV, testingV, heightV, widthV, modelV, ctV, outputV, make_reportV)
-    predict_command.run(testingV, modelV, ctV, outputV, make_reportV, jsonV)
+    predict_command.run(testingV, modelV, ctV, outputV, make_reportV, jsonV, unlabeledV)
     print("test")
     return
 

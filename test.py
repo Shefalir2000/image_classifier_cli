@@ -39,4 +39,4 @@ model.compile(optimizer = 'adam',
 
 model.summary()
 
-print(model.layers[-1].output.get_shape()[1])
+print("DADS" + str(model.layers[-1].output.get_shape()[1]))

@@ -1,3 +1,4 @@
+from itertools import count
 import shutil
 
 import tensorflow as tf
@@ -167,6 +168,56 @@ def categorize(confidence_threshold, class_names):
         LOGGER.info("Report generated")
     LOGGER.info("Finished predicting test data ")
 
+def categorizeUL(confidence_threshold, class_names):
+    testing_directory_name = data.test_file
+
+    above_threshold = list()
+    below_threshold = list()
+
+    for file in os.listdir(testing_directory_name):
+        img = tf.keras.utils.load_img(testing_directory_name  + "/" + file, target_size=(data.width_pixels, data.height_pixels))
+        img_array = tf.keras.utils.img_to_array(img)
+        prediction, confidence = m.makePrediction(img_array, class_names)
+        if confidence < confidence_threshold * 100:
+            below_threshold.append((confidence, prediction, testing_directory_name +  "/" +file))
+        else:
+            above_threshold.append((confidence, prediction, testing_directory_name + "/" + file))
+    above_avg_confidence = calculate_average_conf(above_threshold)
+    below_avg_confidence = calculate_average_conf(below_threshold)
+    data.test_files_num = len(below_threshold) + len(above_threshold)
+    if(data.make_report):
+        mdFile = MdUtils(file_name=data.model_file + "/Confidence Report",
+                            title="Confidence Report")
+
+        mdFile.new_header(level = 1 ,title = "Model version number " + str(m.version_num))
+
+        mdFile.new_header(level=1, title="Threshold Value")
+        mdFile.new_paragraph("The threshold value is "+ str(round(confidence_threshold*100,3))+ "." )
+        mdFile.new_header(level=2, title="Confidence Above the Threshold")
+        mdFile.new_paragraph("The average confidence level above the threshold is: " + str(above_avg_confidence))
+        mdFile.new_paragraph("The data is in Appendix A")
+
+        mdFile.new_header(level=3, title="Confidence Below the Threshold")
+        mdFile.new_paragraph("The average confidence level below the threshold is: " + str(below_avg_confidence))
+        mdFile.new_paragraph("The data is in Appendix B")
+
+        #Check if training file exist in model
+        if os.path.exists(data.model_file + "/train_data.png"):
+            mdFile.new_header(level = 2, title = "Training Accuracy and Loss for Validation vs Training data")
+            mdFile.new_line(mdFile.new_inline_image(text="train_data.png", path = "/train_data.png"))
+        else:
+            print("data image not found")
+        mdFile.new_header(level=2, title="Appendix A")
+        for i in above_threshold:
+            mdFile.write("Path to Image: "+ str(i[2])+"\t"+"Confidence Level: " + str(i[0])+"\t"+"Predicted Label: "+str(i[1])+"\t"+"\n")
+
+        mdFile.new_header(level=2, title="Appendix B")
+        for i in below_threshold:
+            mdFile.write("Path to Image: "+ str(i[2])+"\t"+"Confidence Level: " + str(i[0])+"\t"+"Predicted Label: "+str(i[1])+"\t"+"\n")
+
+        mdFile.create_md_file()
+        LOGGER.info("Report generated")
+    LOGGER.info("Finished predicting test data ")
 #caluclate the average accuracy and confidence for the markdown file
 def caluclate_average(threshold_list):
     avg_confidence = 0
@@ -181,5 +232,13 @@ def caluclate_average(threshold_list):
         return 0, 0
     return avg_accuracy/counter, avg_confidence/counter
 
-
+def calculate_average_conf(threshold_list):
+    avg_confidence = 0
+    counter = 0
+    for i in threshold_list:
+        counter += 1
+        avg_confidence += i[0]
+    if counter == 0:
+        return 0,0
+    return avg_confidence/counter
 

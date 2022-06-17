@@ -209,11 +209,11 @@ def categorizeUL(confidence_threshold, class_names):
             print("data image not found")
         mdFile.new_header(level=2, title="Appendix A")
         for i in above_threshold:
-            mdFile.write("Path to Image: "+ str(i[3])+"\t"+"Confidence Level: " + str(i[0])+"\t"+"Predicted Label: "+str(i[1])+"\t"+"Actual Label: "+str(i[2])+"\n")
+            mdFile.write("Path to Image: "+ str(i[2])+"\t"+"Confidence Level: " + str(i[0])+"\t"+"Predicted Label: "+str(i[1])+"\t"+"\n")
 
         mdFile.new_header(level=2, title="Appendix B")
         for i in below_threshold:
-            mdFile.write("Path to Image: "+ str(i[3])+"\t"+"Confidence Level: " + str(i[0])+"\t"+"Predicted Label: "+str(i[1])+"\t"+"Actual Label: "+str(i[2])+"\n")
+            mdFile.write("Path to Image: "+ str(i[2])+"\t"+"Confidence Level: " + str(i[0])+"\t"+"Predicted Label: "+str(i[1])+"\t"+"\n")
 
         mdFile.create_md_file()
         LOGGER.info("Report generated")
